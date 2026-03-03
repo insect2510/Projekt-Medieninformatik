@@ -1,0 +1,34 @@
+[
+      {
+      "trackname": "Yellow Room",
+      "filename": "01_Yellow_Room.mp3"
+   },
+         {
+      "trackname": "Breeze",
+      "filename": "02_Breeze.mp3"
+   },
+         {
+      "trackname": "New York",
+      "filename": "03_New_York.mp3"
+   },
+         {
+      "trackname": "Chroma",
+      "filename": "04_Chroma.mp3"
+   },
+            {
+      "trackname": "Into The Loop",
+      "filename": "05_Into_The_Loop.mp3"
+   },
+               {
+      "trackname": "Deep Blue",
+      "filename": "06_Deep_Blue.mp3"
+   },
+               {
+      "trackname": "Out Of The Loop",
+      "filename": "07_Out_Of_The_Loop.mp3"
+   },
+               {
+      "trackname": "Sunday Afternoon",
+      "filename": "08_Sunday_Afternoon.mp3"
+   }
+]
