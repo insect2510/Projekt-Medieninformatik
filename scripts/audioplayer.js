@@ -51,7 +51,7 @@ function audioPlayer() {
 
         function writeHtmlAudioPlayer(myArr) {
 
-            let x = 0;
+            let trackid = 0;
             let y = 0;
             let trackidstart = 0;
             let htmlAudioPlayer = "";
@@ -115,15 +115,16 @@ function audioPlayer() {
             tracklistItems.forEach((item, index) => {
                 item.addEventListener("click", () => {
                     togglePlay(index);
+                    trackid = index;
                 });
             });
 
             // add event listener to prev button
             const prev = document.getElementById("prev");
             prev.addEventListener("click", () => {
-                if (x > 0) {
-                    x--;
-                    play(myArr[x]);
+                if (trackid > 0) {
+                    trackid--;
+                    play(myArr[trackid]);
                 } else {
                     prev.classList.remove("active");
                 }
@@ -132,9 +133,9 @@ function audioPlayer() {
             // add event listener to next button
             const next = document.getElementById("next");
             next.addEventListener("click", () => {
-                if (x < (myArr.length - 1)) {
-                    x++;
-                    play(myArr[x]);
+                if (trackid < (myArr.length - 1)) {
+                    trackid++;
+                    play(myArr[trackid]);
                 } else {
                     prev.classList.remove("active");
                 }
@@ -143,7 +144,7 @@ function audioPlayer() {
             // add event listener to play button
             button.addEventListener("click", () => {
                 if (audio.paused) {
-                    play(myArr[x]);
+                    play(myArr[trackid]);
 
                 } else {
                     audio.pause();
@@ -151,9 +152,9 @@ function audioPlayer() {
                 }
             });
 
-            function togglePlay(x) {
+            function togglePlay(trackid) {
                 if (audio.paused) {
-                    play(myArr[x]);
+                    play(myArr[trackid]);
                 } else {
                     audio.pause();
                     button.classList.remove("active");
