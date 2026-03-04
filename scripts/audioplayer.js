@@ -53,6 +53,7 @@ function audioPlayer() {
 
             let x = 0;
             let y = 0;
+            let trackidstart = 0;
             let htmlAudioPlayer = "";
 
             // chech if array has no entries
@@ -66,16 +67,16 @@ function audioPlayer() {
                 // if arrays has entries, construct html
 
                 // contruct tracklist from array
+
                 htmlAudioPlayer += "<h3>Tracklist</h3>";
             htmlAudioPlayer += "<ul class='tracklist'>";
-
             for (y = 0; y < myArr.length; y++) {
                 htmlAudioPlayer += "<li>" + (y + 1) + ". " + myArr[y].trackname + "</li>";
             }
             htmlAudioPlayer += "</ul>";
 
-            // Contruct Play Buttons
-            x = 0;
+            // construct Play Buttons
+
             htmlAudioPlayer += "<ul class='play-buttons'>";
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<button id='prev'>";
@@ -84,8 +85,8 @@ function audioPlayer() {
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
-            htmlAudioPlayer += "<audio src='assets/audio/" + myArr[x].filename + "'></audio>";
-            htmlAudioPlayer += "<button class='toggle'>" + myArr[x].trackname + "</button>";
+            htmlAudioPlayer += "<audio src='assets/audio/" + myArr[trackidstart].filename + "'></audio>";
+            htmlAudioPlayer += "<button class='toggle'>" + myArr[trackidstart].trackname + "</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<button id='next'>";
@@ -97,65 +98,77 @@ function audioPlayer() {
             // write constructed html into DOM
 
             document.getElementById("audioplayer").innerHTML = htmlAudioPlayer;
-
             const container = document.getElementById("audioplayer");
             const button = container.querySelector(".toggle");
             const audio = container.querySelector("audio");
+            const tracklistItems = container.querySelectorAll(".tracklist li");
 
+
+            // BEISPIEL CODE Kontrolle mit ChatGPT
+
+            //for (y = 0; y < myArr.length; y++) {
+            //    tracklistItems[y].addEventListener("click", () => {
+            //        togglePlay(y);
+            //    });
+           // }
+
+            tracklistItems.forEach((item, index) => {
+                item.addEventListener("click", () => {
+                    togglePlay(index);
+                });
+            });
 
             // add event listener to prev button
-
             const prev = document.getElementById("prev");
-
             prev.addEventListener("click", () => {
                 if (x > 0) {
                     x--;
-                    document.querySelector("audio").src = "assets/audio/" + myArr[x].filename;
-                    document.querySelector(".toggle").textContent = myArr[x].trackname;
-                    togglePlay();
+                    play(myArr[x]);
                 } else {
                     prev.classList.remove("active");
                 }
             });
 
             // add event listener to next button
-
             const next = document.getElementById("next");
-
             next.addEventListener("click", () => {
-                if (x < myArr.length - 1) {
+                if (x < (myArr.length - 1)) {
                     x++;
-                    document.querySelector("audio").src = "assets/audio/" + myArr[x].filename;
-                    document.querySelector(".toggle").textContent = myArr[x].trackname;
-                    togglePlay();
+                    play(myArr[x]);
                 } else {
                     prev.classList.remove("active");
                 }
             });
 
             // add event listener to play button
-
             button.addEventListener("click", () => {
-                togglePlay();
+                if (audio.paused) {
+                    play(myArr[x]);
+
+                } else {
+                    audio.pause();
+                    button.classList.remove("active");
+                }
             });
 
-            function togglePlay() {
-
+            function togglePlay(x) {
                 if (audio.paused) {
-                    audio.play();
-                    button.classList.add("active");
+                    play(myArr[x]);
                 } else {
                     audio.pause();
                     button.classList.remove("active");
                 }
             }
 
-
-        };
-    }
+            function play(trackid) {
+                document.querySelector("audio").src = "assets/audio/" + trackid.filename;
+                document.querySelector(".toggle").textContent = trackid.trackname;
+                audio.play();
+                button.classList.add("active");
+            }
+        }
+    };
 }
-
-
 
 
 function audioPlayer2() {
