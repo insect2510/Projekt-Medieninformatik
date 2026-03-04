@@ -4,7 +4,6 @@ audioPlayer();
 
 
 
-
 // --- Audioplayer ---
 
 function audioPlayer() {
@@ -68,8 +67,8 @@ function audioPlayer() {
 
                     htmlAudioPlayer += "<li>";
                     htmlAudioPlayer += "<audio src='assets/audio/" + myArr[x].filename + "'></audio>";
-                    htmlAudioPlayer += "<p>" + (x+1) + ". " + myArr[x].trackname + "</p>";
-                    htmlAudioPlayer += "<button class='toggle'>Play</button>";
+                    // htmlAudioPlayer += "<p>" + (x+1) + ". " + myArr[x].trackname + "</p>";
+                    htmlAudioPlayer += "<button class='toggle'>" + myArr[x].trackname + "</button>";
                     htmlAudioPlayer += "</li>";
                 }
 
@@ -84,12 +83,12 @@ function audioPlayer() {
                 li.querySelector(".toggle").addEventListener("click", () => {
                     if (audio.paused) {
                         audio.play();
-                        li.querySelector(".toggle").textContent = "Stop";
-                        li.style.backgroundColor = "silver";
+                         // li.style.backgroundColor = "silver";
+                        li.querySelector(".toggle").style.backgroundColor = "silver";
                     } else {
                         audio.pause();
-                        li.querySelector(".toggle").textContent = "Play";
-                        li.style.backgroundColor = "#333";
+                       // li.style.backgroundColor = "#333";
+                        li.querySelector(".toggle").style.backgroundColor = "#333";
                     }
                 });
             });
