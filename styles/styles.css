@@ -76,8 +76,11 @@ body {
 li,
 ul,
 p,
-section, 
-h1, h2, h3, h4 {
+section,
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
   padding: 0;
 }
@@ -105,6 +108,21 @@ iframe {
 
   @media only screen and (min-width: 824px) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1.0)), url("../assets/img/hero/hero-5.jpg");
+  }
+
+
+
+  .navigation-top {
+    
+    nav-item {
+          
+    background-color: var(--dark-grey);
+    top: 0px;
+    min-height: 100px;
+    }
+
+
+
   }
 
   /* position hero text */
@@ -145,21 +163,21 @@ iframe {
 }
 
 .section {
-  background-color: #333;
+  background-color: var(--dark-grey);
   padding: 4rem 0rem;
 
   h2 {
-      color: var(--white);
-      text-transform: uppercase;
-      font-size: var(--font-size-hero);
-      line-height: 1;
-      color: var(--white);
-      letter-spacing: 0.10em;
-      font-family: "Roboto";
-      font-weight: 800;
-      max-width: 50%;
-      Padding: 3rem 8%;
-      text-align: left;
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: var(--font-size-hero);
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: 0.10em;
+    font-family: "Roboto";
+    font-weight: 800;
+    max-width: 50%;
+    Padding: 3rem 8%;
+    text-align: left;
   }
 }
 
@@ -198,7 +216,7 @@ iframe {
 
   li {
     padding: 4rem;
-    background-color: #333;
+    background-color: var(--dark-grey);
     display: grid;
     transition: color var(--transistion-time), background-color var(--transistion-time);
 
@@ -211,11 +229,11 @@ iframe {
       border-radius: 50%;
       font-size: clamp(1rem, 1vw, 2rem);
       justify-self: center;
-
       transition: color var(--transistion-time), background-color var(--transistion-time);
 
 
-      &:hover,  &:hover:active {
+      &:hover,
+      &:hover:active {
         color: var(--color-main);
         background-color: var(--white);
         cursor: pointer;
