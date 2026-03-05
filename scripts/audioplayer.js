@@ -1,7 +1,7 @@
 // call audioplayer 
 
 audioPlayer();
-audioPlayer2();
+//audioPlayer2();
 
 
 
@@ -54,6 +54,7 @@ function audioPlayer() {
             let trackid = 0;
             let y = 0;
             let trackidstart = 0;
+            let trackidprevious = trackidstart;
             let htmlAudioPlayer = "";
 
             // chech if array has no entries
@@ -72,7 +73,7 @@ function audioPlayer() {
             htmlAudioPlayer += "<ul class='tracklist'>";
             for (y = 0; y < myArr.length; y++) {
                 htmlAudioPlayer += "<li>" + (y + 1) + ". " + myArr[y].trackname + "</li><p>" + myArr[y].length + "</p>";
-            
+
             }
             htmlAudioPlayer += "</ul>";
 
@@ -87,7 +88,7 @@ function audioPlayer() {
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<audio src='assets/audio/" + myArr[trackidstart].filename + "'></audio>";
-            htmlAudioPlayer += "<button class='toggle'>" + myArr[trackidstart].trackname + "</button>";
+            htmlAudioPlayer += "<button class='toggle'>play</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<button id='next'>";
@@ -99,6 +100,8 @@ function audioPlayer() {
             // write constructed html into DOM
 
             document.getElementById("audioplayer").innerHTML = htmlAudioPlayer;
+
+
             const container = document.getElementById("audioplayer");
             const button = container.querySelector(".toggle");
             const audio = container.querySelector("audio");
@@ -111,20 +114,29 @@ function audioPlayer() {
             //    tracklistItems[y].addEventListener("click", () => {
             //        togglePlay(y);
             //    });
-           // }
+            // }
 
             tracklistItems.forEach((item, index) => {
                 item.addEventListener("click", () => {
-                    togglePlay(index);
+                    tracklistItems[trackidprevious].classList.remove("active");
+                    tracklistItems[index].classList.add("active");
+                    play(myArr[index])
                     trackid = index;
+                    trackidprevious = index;
                 });
             });
+
+            tracklistItems[trackidstart].classList.add("active");
+
 
             // add event listener to prev button
             const prev = document.getElementById("prev");
             prev.addEventListener("click", () => {
                 if (trackid > 0) {
+                    tracklistItems[trackidprevious].classList.remove("active");
                     trackid--;
+                    trackidprevious = trackid;
+                    tracklistItems[trackid].classList.add("active");
                     play(myArr[trackid]);
                 } else {
                     prev.classList.remove("active");
@@ -135,7 +147,11 @@ function audioPlayer() {
             const next = document.getElementById("next");
             next.addEventListener("click", () => {
                 if (trackid < (myArr.length - 1)) {
+                    tracklistItems[trackidprevious].classList.remove("active");
                     trackid++;
+                    trackidprevious = trackid;
+                    tracklistItems[trackid].classList.add("active");
+
                     play(myArr[trackid]);
                 } else {
                     prev.classList.remove("active");
@@ -149,31 +165,34 @@ function audioPlayer() {
 
                 } else {
                     audio.pause();
-                    button.classList.remove("active");
+             //       button.classList.remove("active");
+                    document.querySelector(".toggle").textContent = "play";
                 }
             });
 
-            function togglePlay(trackid) {
-                if (audio.paused) {
-                    play(myArr[trackid]);
-                } else {
-                    audio.pause();
-                    button.classList.remove("active");
-                }
-            }
+            // function togglePlay(trackid) {
+            //    if (audio.paused) {
+            //        play(myArr[trackid]);
+            //    } else {
+            //        audio.pause();
+            //        button.classList.remove("active");
+            //    }
+            // }
 
             function play(trackid) {
                 document.querySelector("audio").src = "assets/audio/" + trackid.filename;
-                document.querySelector(".toggle").textContent = trackid.trackname;
+                //document.querySelector(".toggle").textContent = trackid.trackname;
+                document.querySelector(".toggle").textContent = "stop";
+
                 audio.play();
-                button.classList.add("active");
+            //    button.classList.add("active");
             }
         }
     };
 }
 
-
-function audioPlayer2() {
+//
+/* function audioPlayer2() {
 
     // check if id audioplayer is loaded
     // if so, run function
@@ -263,3 +282,4 @@ function audioPlayer2() {
         };
     }
 }
+    */
