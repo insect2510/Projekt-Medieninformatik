@@ -68,10 +68,11 @@ function audioPlayer() {
 
                 // contruct tracklist from array
 
-                htmlAudioPlayer += "<h3>Tracklist</h3>";
+                htmlAudioPlayer += "<h3>Listen</h3>";
             htmlAudioPlayer += "<ul class='tracklist'>";
             for (y = 0; y < myArr.length; y++) {
-                htmlAudioPlayer += "<li>" + (y + 1) + ". " + myArr[y].trackname + "</li>";
+                htmlAudioPlayer += "<li>" + (y + 1) + ". " + myArr[y].trackname + "</li><p>" + myArr[y].length + "</p>";
+            
             }
             htmlAudioPlayer += "</ul>";
 
