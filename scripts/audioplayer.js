@@ -70,12 +70,12 @@ function audioPlayer() {
                 // contruct tracklist from array
 
                 htmlAudioPlayer += "<h3>Listen</h3>";
-            htmlAudioPlayer += "<ul class='tracklist'>";
+            htmlAudioPlayer += "<ol class='tracklist'>";
             for (y = 0; y < myArr.length; y++) {
-                htmlAudioPlayer += "<li>" + (y + 1) + ". " + myArr[y].trackname + "</li><p>" + myArr[y].length + "</p>";
+                htmlAudioPlayer += "<li><button>" + (y + 1) + ". " + myArr[y].trackname + "</button><p>" + myArr[y].length + "</p></li> ";
 
             }
-            htmlAudioPlayer += "</ul>";
+            htmlAudioPlayer += "</ol>";
 
             // construct Play Buttons
 
@@ -105,7 +105,7 @@ function audioPlayer() {
             const container = document.getElementById("audioplayer");
             const button = container.querySelector(".toggle");
             const audio = container.querySelector("audio");
-            const tracklistItems = container.querySelectorAll(".tracklist li");
+            const tracklistItems = container.querySelectorAll(".tracklist button");
 
 
             // BEISPIEL CODE Kontrolle mit ChatGPT

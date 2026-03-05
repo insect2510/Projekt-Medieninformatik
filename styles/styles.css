@@ -76,6 +76,7 @@ body {
 
 li,
 ul,
+ol,
 p,
 section,
 h1,
@@ -241,26 +242,32 @@ h3 {
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
-  gap: 2rem;
 
   .tracklist {
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
     padding: 0rem;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 2rem;
+   margin-bottom: 2rem;
     ;
 
     li {
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+
+    button {
       background-color: var(--color-main);
       color: var(--white);
-      border-bottom: solid 1px var(--dark-grey);
+      /* border-bottom: solid 1px var(--dark-grey); */
+      border: none;
       font-size: clamp(1rem, 1vw, 2rem);
       font-family: "Roboto";
       line-height: 1;
       font-weight: 200;
+      width: fit-content;
       text-transform: uppercase;
       transition: color var(--transistion-time),
         background-color var(--transistion-time),
@@ -284,8 +291,9 @@ h3 {
       line-height: 1;
       font-family: "Roboto";
       border-bottom: solid 1px var(--dark-grey);
-      padding-left: 2em;
-      align-self: end;
+      /*align-self: end;*/
+      align-self: flex-end;
+
 
     }
   }
@@ -293,7 +301,7 @@ h3 {
   .play-buttons {
     display: flex;
     gap: 2rem;
-    margin-top: 2rem;
+    margin-top: 0rem;
     justify-content: center;
     align-items: center;
 
