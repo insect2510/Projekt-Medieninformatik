@@ -10,7 +10,9 @@
 
   --black: #111;
   --dark-grey: #333;
-  --light-grey: #bbbbbb;
+  --light-grey: #aaaaaa;
+
+  --blue: hsl(200, 81%, 48%);
 
   /*++++++++++++++++++++++*/
   /*                      */
@@ -19,17 +21,26 @@
   /*++++++++++++++++++++++*/
 
   /* text colors */
-  --color-main:
-    --color-main-title: --color-hero-text: --color-text:
-    /* background color */
-    --color-background: var(--white);
+  --color-main: var(--white);
 
-  /* hover color */
-  --color-highlight:
+
+    /* background color */
+    --color-background: var(--dark-grey);
+
+
+
+  /* highlight color */
+  --color-highlight: var(--blue);
+
+  /* highlight background */
+
+  --color-highlight-background: var(--light-grey);
 
 
     /* colors for feature section */
-    --color-text-feature: --color-feature-background:;
+    --color-text-feature:
+    --color-feature-background:;
+
   /* color for decoration */
 
 
@@ -127,11 +138,10 @@ iframe {
     /* page title as hero text */
 
     h1 {
-      color: var(--white);
+      color: var(--color-main);
       text-transform: uppercase;
       font-size: var(--font-size-hero);
       line-height: 1;
-      color: var(--white);
       letter-spacing: 0.10em;
       font-family: "Roboto";
       font-weight: 800;
@@ -142,7 +152,7 @@ iframe {
 
     /* second line hero text */
     p {
-      color: var(--color-hero-text);
+      color: var(--color-main);
       padding-bottom: 0rem;
     }
 
@@ -169,7 +179,7 @@ iframe {
 
 
   a {
-    color: var(--white);
+    color: var(--color-main);
     text-transform: uppercase;
     font-size: var(--font-size);
     line-height: 1;
@@ -184,7 +194,7 @@ iframe {
 
 h2,
 h3 {
-  color: var(--white);
+  color: var(--);
   text-transform: uppercase;
   font-size: var(--font-size-hero);
   line-height: 1;
@@ -212,12 +222,16 @@ h3 {
 
 }
 
+
+
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 2rem;
   column-gap: 0rem;
   justify-items: center;
+  color: var(--color-background);
+  background-color: var(--color-main);
 
   img {
     width: auto;
@@ -237,6 +251,7 @@ h3 {
   }
 }
 
+/*
 .audio-player {
 
   margin-left: auto;
@@ -263,7 +278,6 @@ h3 {
     button {
       background-color: var(--color-main);
       color: var(--white);
-      /* border-bottom: solid 1px var(--dark-grey); */
       border: none;
       font-size: clamp(1rem, 1vw, 2rem);
       font-family: "Roboto";
@@ -277,7 +291,6 @@ h3 {
         border-bottom var(--transistion-time);
 
       &:hover {
-        /* border-bottom: solid 1px var(--white);*/
         padding-left: 1rem;
         cursor: pointer;
       }
@@ -294,7 +307,6 @@ h3 {
       line-height: 1;
       font-family: "Roboto";
       border-bottom: solid 1px var(--dark-grey);
-      /*align-self: end;*/
       align-self: flex-end;
 
     }
@@ -392,7 +404,7 @@ h3 {
   }
 }
 
-/*
+
 .grid-audio-player-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
