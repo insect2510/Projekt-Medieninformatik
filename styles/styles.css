@@ -258,6 +258,8 @@ h3 {
       grid-template-columns: 1fr auto;
     }
 
+
+
     button {
       background-color: var(--color-main);
       color: var(--white);
@@ -300,11 +302,21 @@ h3 {
   }
 
   .play-buttons {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
     margin-top: 0rem;
     justify-content: center;
     align-items: center;
+
+    .volume {
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+
+    input {
+      width: 100%;
+    }
 
     button {
       display: flex;

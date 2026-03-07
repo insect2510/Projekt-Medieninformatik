@@ -70,7 +70,7 @@ function audioPlayer() {
                 // contruct tracklist from array
 
                 htmlAudioPlayer += "<h3>Listen</h3>";
-            htmlAudioPlayer += "<ol class='tracklist'>";
+                htmlAudioPlayer += "<ol class='tracklist'>";
             for (y = 0; y < myArr.length; y++) {
                 htmlAudioPlayer += "<li><button>" + (y + 1) + ". " + myArr[y].trackname + "</button><p>" + myArr[y].length + "</p></li> ";
 
@@ -80,6 +80,10 @@ function audioPlayer() {
             // construct Play Buttons
 
             htmlAudioPlayer += "<ul class='play-buttons'>";
+            htmlAudioPlayer += "<li class='volume'>";
+             htmlAudioPlayer += "<input type='range' id='volume' name='volume' min='0' max='10' >";
+            htmlAudioPlayer += "<label for='volume'>Volume</label>";
+             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<button id='prev'>";
             htmlAudioPlayer += "PREV";
