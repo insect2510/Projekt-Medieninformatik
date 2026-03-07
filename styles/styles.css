@@ -50,7 +50,7 @@
   --font-size-h1: clamp(2rem, 5vw, 5rem);
   --font-size-h2: calc(var(--font-size-hero)*0.8);
   --font-size-h3: calc(var(--font-size-h2)*0.8);
-  --font-size-text: clamp(1rem, 1vw, 1.25rem);
+  --font-size-text: clamp(1rem, 1.5vw, 2rem);
 
   /* font weight */
   --font-weight-hero: 800;
@@ -147,7 +147,7 @@ iframe {
       text-transform: uppercase;
       font-size: var(--font-size-hero);
       line-height: 1;
-      letter-spacing: 0.10em;
+      letter-spacing: 0.03em;
       font-family: "Roboto";
       font-weight: 800;
       max-width: 50%;
@@ -166,7 +166,6 @@ iframe {
 }
 
 .navigation-top {
-
 
   background-color: var(--dark-grey);
   position: fixed;
@@ -210,7 +209,7 @@ h2 {
   font-size: var(--font-size-h2);
   line-height: 1;
   color: var(--white);
-  letter-spacing: 0.10em;
+  letter-spacing: 0.03em;
   font-family: "Roboto";
   font-weight: 800;
   max-width: 50%;
@@ -224,7 +223,7 @@ h3 {
   text-transform: uppercase;
   font-size: var(--font-size-h3);
   line-height: 1;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.03em;
   font-family: "Roboto";
   font-weight: 800;
   max-width: 50%;
@@ -245,7 +244,7 @@ section {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 2rem;
-  column-gap: 0rem;
+  column-gap: 5%;
   justify-items: center;
   color: var(--color-background);
   background-color: var(--color-main);
@@ -257,14 +256,13 @@ section {
   }
 
   article {
-    max-width: 80%;
     padding-top: 0rem;
     padding-bottom: 0rem;
-
   }
 
   p {
-    font-size: clamp(1rem, 2vw, 2rem);
+    font-size:  var(--font-size-text);
+    letter-spacing: 0.02em;
     padding-bottom: 1rem;
     margin: auto;
   }
