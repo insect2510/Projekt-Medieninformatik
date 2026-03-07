@@ -194,7 +194,8 @@ iframe {
     color: var(--color-main);
     text-transform: uppercase;
     text-decoration: none;
-    font-size: var(--font-size-text);
+    /*font-size: var(--font-size-text);*/
+    font-size: 1.1rem;
     line-height: 1;
     color: var(--white);
     letter-spacing: 0.10em;
@@ -251,7 +252,7 @@ section {
 .shop-buttons {
   display: flex;
   flex-direction: row;
-  column-gap: 2rem;
+  column-gap: 1rem;
 
   li {
     display: flex;
@@ -260,7 +261,7 @@ section {
     border: 1px solid var(--color-background);
     border-radius: 50%;
     font-size: clamp(1.5rem, 2vw, 4rem);
-    width: clamp(80px, 6vw, 160px);
+    width: clamp(60px, 6vw, 160px);
     aspect-ratio: 1/1;
     justify-content: center;
     align-items: center;
@@ -299,8 +300,7 @@ section {
 
 
   img {
-    width: auto;
-    max-width: 100%;
+    width: 100%
   }
 
   article {
