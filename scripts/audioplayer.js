@@ -1,11 +1,6 @@
 // call audioplayer 
 
 audioPlayer();
-//audioPlayer2();
-
-
-
-
 
 // --- Audioplayer ---
 
@@ -71,7 +66,7 @@ function audioPlayer() {
                 // contruct tracklist from array
 
                 htmlAudioPlayer += "<h3>Listen</h3>";
-                htmlAudioPlayer += "<ol class='tracklist'>";
+            htmlAudioPlayer += "<ol class='tracklist'>";
             for (y = 0; y < myArr.length; y++) {
                 htmlAudioPlayer += "<li><button>" + (y + 1) + ". " + myArr[y].trackname + "</button><p>" + myArr[y].length + "</p></li> ";
 
@@ -80,15 +75,17 @@ function audioPlayer() {
 
             // construct player controls
 
+            
             htmlAudioPlayer += "<ul class='play-buttons'>";
             htmlAudioPlayer += "<li class='volume'>";
+            htmlAudioPlayer += "<label for='volume'>Volume:</label>";
             htmlAudioPlayer += "<input id='volume' class='slider' type='range' name='volume' min='0' max='1' value='0.5' list='gain-vals' step='0.01' data-action='volume' >";
             htmlAudioPlayer += "<datalist id='gain-vals'>";
             htmlAudioPlayer += "<option value='0' label='min'>";
             htmlAudioPlayer += "<option value='1' label='max'>";
             htmlAudioPlayer += "</datalist>";
-            htmlAudioPlayer += "<label for='volume'>Volume</label>";
             htmlAudioPlayer += "</li>";
+                       
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<button id='prevButton'>";
             htmlAudioPlayer += "PREV";
