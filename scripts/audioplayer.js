@@ -65,7 +65,7 @@ function audioPlayer() {
                 // if arrays has entries, construct html
                 // contruct tracklist from array
 
-                htmlAudioPlayer += "<h3>Listen</h3>";
+                htmlAudioPlayer += "<h2>Listen</h2>";
             htmlAudioPlayer += "<ol class='tracklist'>";
             for (y = 0; y < myArr.length; y++) {
                 htmlAudioPlayer += "<li><button>" + (y + 1) + ". " + myArr[y].trackname + "</button><p>" + myArr[y].length + "</p></li> ";
@@ -80,7 +80,7 @@ function audioPlayer() {
             htmlAudioPlayer += "<ul class='play-buttons'>";
             htmlAudioPlayer += "<li class='volume'>";
             htmlAudioPlayer += "<i class='fa-solid fa-volume-low'></i>";
-            htmlAudioPlayer += "<input id='volume' class='slider' type='range' name='volume' min='0' max='1' value='0.5' list='gain-vals' step='0.01' data-action='volume' >";
+            htmlAudioPlayer += "<input id='volume' class='slider' type='range' name='volume' min='0' max='1' value='0.5' list='gain-vals' step='0.01' data-action='volume' aria-label='volume control'>";
             htmlAudioPlayer += "<datalist id='gain-vals'>";
             htmlAudioPlayer += "<option value='0' label='min'>";
             htmlAudioPlayer += "<option value='1' label='max'>";
@@ -91,19 +91,19 @@ function audioPlayer() {
             // player buttons
 
             htmlAudioPlayer += "<li>";
-            htmlAudioPlayer += "<button id='prevButton'>";
+            htmlAudioPlayer += "<button id='prevButton' aria-label='skip to previous track'>";
             htmlAudioPlayer += "<i class='fa-solid fa-chevron-left'></i>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<audio src='assets/audio/" + myArr[trackidstart].filename + "'></audio>";
-            htmlAudioPlayer += "<button id='playButton' class='toggle' role='switch' aria-checked='false'>";
+            htmlAudioPlayer += "<button id='playButton' class='toggle' role='switch' aria-checked='false' aria-label='play and pause the audio'>";
             htmlAudioPlayer += "<i class='fa-solid fa-play'></i>";
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
-            htmlAudioPlayer += "<button id='nextButton'>";
+            htmlAudioPlayer += "<button id='nextButton' aria-label='skip to next track'>";
             htmlAudioPlayer += "<i class='fa-solid fa-chevron-right'></i>";
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";

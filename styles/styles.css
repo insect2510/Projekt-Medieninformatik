@@ -46,7 +46,7 @@
 
   /* other variables */
 
-  --font-size-hero: clamp(3rem, 5vw, 8rem);
+  --font-size-hero: clamp(2rem, 5vw, 8rem);
   --font-size-h1: clamp(2rem, 5vw, 5rem);
   --font-size-h2: clamp(2rem, 4vw, 4rem);
   --font-size-text: clamp(1rem, 1vw, 1.25rem);
@@ -118,15 +118,13 @@ iframe {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /*position: sticky;*/
-  margin-left: auto;
-  margin-right: auto;
+  position: relative;
   top: 0px;
   z-index: -10;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1.0)), url("../assets/img/hero/hero-5.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url("../assets/img/hero/hero-5.jpg");
 
   @media only screen and (min-width: 824px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1.0)), url("../assets/img/hero/hero-5.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url("../assets/img/hero/hero-5.jpg");
   }
 
 

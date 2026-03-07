@@ -4,6 +4,10 @@
     margin-right: auto;
     width: fit-content;
 
+    h2 {
+        padding-left: 0;
+    }
+
     .tracklist {
         display: grid;
         grid-template-columns: 1fr;
