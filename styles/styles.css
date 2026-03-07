@@ -24,8 +24,8 @@
   --color-main: var(--white);
 
 
-    /* background color */
-    --color-background: var(--dark-grey);
+  /* background color */
+  --color-background: var(--dark-grey);
 
 
 
@@ -37,8 +37,8 @@
   --color-highlight-background: var(--light-grey);
 
 
-    /* colors for feature section */
-    --color-text-feature:
+  /* colors for feature section */
+  --color-text-feature:
     --color-feature-background:;
 
   /* color for decoration */
@@ -48,7 +48,8 @@
 
   --font-size-hero: clamp(2rem, 5vw, 8rem);
   --font-size-h1: clamp(2rem, 5vw, 5rem);
-  --font-size-h2: clamp(2rem, 4vw, 4rem);
+  --font-size-h2: calc(var(--font-size-hero)*0.8);
+  --font-size-h3: calc(var(--font-size-h2)*0.8);
   --font-size-text: clamp(1rem, 1vw, 1.25rem);
 
   /* font weight */
@@ -165,20 +166,25 @@ iframe {
 }
 
 .navigation-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+
   background-color: var(--dark-grey);
   position: fixed;
   top: 0px;
   left: 0px;
   width: 100%;
-  Padding: 0 20px;
-  min-height: 100px;
+  Padding: 0;
   z-index: 1000;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+  }
 
   li {
     padding: 1rem;
+    width: fit-content;
   }
 
 
@@ -190,17 +196,18 @@ iframe {
     color: var(--white);
     letter-spacing: 0.10em;
     font-family: "Roboto";
-    font-weight: 800;
+    font-weight: 600;
     text-align: left;
+    width: fit-content;
 
   }
 }
 
-h2,
-h3 {
-  color: var(--);
+h2 {
+    padding-bottom: clamp(1rem, 3vw, 4rem);
+  color: var(--color-main);
   text-transform: uppercase;
-  font-size: var(--font-size-hero);
+  font-size: var(--font-size-h2);
   line-height: 1;
   color: var(--white);
   letter-spacing: 0.10em;
@@ -210,23 +217,29 @@ h3 {
   text-align: left;
 }
 
-h2 {
-  Padding: 3rem 8%;
-}
 
 h3 {
-  Padding: 3rem 0;
+      padding-bottom: clamp(1rem, 3vw, 4rem);
+  color: var(--color-background);
+  text-transform: uppercase;
+  font-size: var(--font-size-h3);
+  line-height: 1;
+  letter-spacing: 0.10em;
+  font-family: "Roboto";
+  font-weight: 800;
+  max-width: 50%;
+  text-align: left;
 }
 
+section {
+  padding: clamp(1rem, 6vw, 8rem) 5%;
+
+}
 
 .section {
   background-color: var(--dark-grey);
-  padding: 4rem 0rem;
-
 
 }
-
-
 
 .grid-2 {
   display: grid;
@@ -237,15 +250,22 @@ h3 {
   color: var(--color-background);
   background-color: var(--color-main);
 
+
   img {
     width: auto;
     max-width: 100%;
   }
 
+  article {
+    max-width: 80%;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+
+  }
+
   p {
     font-size: clamp(1rem, 2vw, 2rem);
-    padding: 0rem;
-    max-width: 80%;
+    padding-bottom: 1rem;
     margin: auto;
   }
 

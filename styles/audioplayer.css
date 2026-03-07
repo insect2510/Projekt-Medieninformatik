@@ -141,7 +141,7 @@
             font-family: "Roboto";
             font-weight: 600;
             text-transform: uppercase;
-            width: clamp(80px, 6vw, 200px);
+            width: clamp(80px, 6vw, 160px);
             aspect-ratio: 1/1;
             justify-content: center;
             align-items: center;
