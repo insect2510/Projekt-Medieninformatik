@@ -75,30 +75,36 @@ function audioPlayer() {
 
             // construct player controls
 
-            
+            // volume control
+
             htmlAudioPlayer += "<ul class='play-buttons'>";
             htmlAudioPlayer += "<li class='volume'>";
-            htmlAudioPlayer += "<label for='volume'>Volume:</label>";
+            htmlAudioPlayer += "<i class='fa-solid fa-volume-low'></i>";
             htmlAudioPlayer += "<input id='volume' class='slider' type='range' name='volume' min='0' max='1' value='0.5' list='gain-vals' step='0.01' data-action='volume' >";
             htmlAudioPlayer += "<datalist id='gain-vals'>";
             htmlAudioPlayer += "<option value='0' label='min'>";
             htmlAudioPlayer += "<option value='1' label='max'>";
             htmlAudioPlayer += "</datalist>";
+             htmlAudioPlayer += "<i class='fa-solid fa-volume-high'></i>";
             htmlAudioPlayer += "</li>";
-                       
+
+            // player buttons
+
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<button id='prevButton'>";
-            htmlAudioPlayer += "PREV";
+            htmlAudioPlayer += "<i class='fa-solid fa-chevron-left'></i>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<audio src='assets/audio/" + myArr[trackidstart].filename + "'></audio>";
-            htmlAudioPlayer += "<button id='playButton' class='toggle' role='switch' aria-checked='false'>play</button>";
+            htmlAudioPlayer += "<button id='playButton' class='toggle' role='switch' aria-checked='false'>";
+            htmlAudioPlayer += "<i class='fa-solid fa-play'></i>";
+            htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<button id='nextButton'>";
-            htmlAudioPlayer += "NEXT";
+            htmlAudioPlayer += "<i class='fa-solid fa-chevron-right'></i>";
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "</ul>";
@@ -173,7 +179,7 @@ function audioPlayer() {
                     tracklistItems[trackid].classList.add("active");
                     play(myArr[trackid]);
                 } else {
-                    prev.classList.remove("active");
+                    prevButton.classList.remove("active");
                 }
             });
 
@@ -185,10 +191,9 @@ function audioPlayer() {
                     trackid++;
                     trackidprevious = trackid;
                     tracklistItems[trackid].classList.add("active");
-
                     play(myArr[trackid]);
                 } else {
-                    prev.classList.remove("active");
+                    nextButton.classList.remove("active");
                 }
             });
 
@@ -198,10 +203,9 @@ function audioPlayer() {
                 if (audio.paused) {
                     play(myArr[trackid]);
                     playButton.setAttribute("aria-checked", "true");
-
                 } else {
                     audio.pause();
-                    playButton.textContent = "play";
+                    playButton.innerHTML = "<i class='fa-solid fa-play'></i>";
                 }
             });
 
@@ -218,7 +222,7 @@ function audioPlayer() {
 
             function play(trackid) {
                 document.querySelector("audio").src = "assets/audio/" + trackid.filename;
-                playButton.textContent = "stop";
+                playButton.innerHTML = "<i class='fa-solid fa-stop'></i>";
 
                 if (audioCtx.state === "suspended") {
                     audioCtx.resume();
