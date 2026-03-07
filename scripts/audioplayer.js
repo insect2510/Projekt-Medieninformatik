@@ -5,6 +5,8 @@ audioPlayer();
 
 
 
+
+
 // --- Audioplayer ---
 
 function audioPlayer() {
@@ -66,7 +68,6 @@ function audioPlayer() {
             else
 
                 // if arrays has entries, construct html
-
                 // contruct tracklist from array
 
                 htmlAudioPlayer += "<h3>Listen</h3>";
@@ -77,25 +78,29 @@ function audioPlayer() {
             }
             htmlAudioPlayer += "</ol>";
 
-            // construct Play Buttons
+            // construct player controls
 
             htmlAudioPlayer += "<ul class='play-buttons'>";
             htmlAudioPlayer += "<li class='volume'>";
-             htmlAudioPlayer += "<input type='range' id='volume' name='volume' min='0' max='10' >";
+            htmlAudioPlayer += "<input id='volume' class='slider' type='range' name='volume' min='0' max='1' value='0.5' list='gain-vals' step='0.01' data-action='volume' >";
+            htmlAudioPlayer += "<datalist id='gain-vals'>";
+            htmlAudioPlayer += "<option value='0' label='min'>";
+            htmlAudioPlayer += "<option value='1' label='max'>";
+            htmlAudioPlayer += "</datalist>";
             htmlAudioPlayer += "<label for='volume'>Volume</label>";
-             htmlAudioPlayer += "</li>";
+            htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
-            htmlAudioPlayer += "<button id='prev'>";
+            htmlAudioPlayer += "<button id='prevButton'>";
             htmlAudioPlayer += "PREV";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<audio src='assets/audio/" + myArr[trackidstart].filename + "'></audio>";
-            htmlAudioPlayer += "<button class='toggle'>play</button>";
+            htmlAudioPlayer += "<button id='playButton' class='toggle' role='switch' aria-checked='false'>play</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
-            htmlAudioPlayer += "<button id='next'>";
+            htmlAudioPlayer += "<button id='nextButton'>";
             htmlAudioPlayer += "NEXT";
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
@@ -105,11 +110,27 @@ function audioPlayer() {
 
             document.getElementById("audioplayer").innerHTML = htmlAudioPlayer;
 
+            // setup for controls
 
             const container = document.getElementById("audioplayer");
-            const button = container.querySelector(".toggle");
+            const playButton = document.getElementById("playButton");
+            const prevButton = document.getElementById("prevButton");
+            const nextButton = document.getElementById("nextButton");
+
             const audio = container.querySelector("audio");
             const tracklistItems = container.querySelectorAll(".tracklist button");
+            const volumeControl = document.getElementById("volume");
+            const audioCtx = new AudioContext();
+
+            // create audio node
+
+            const track = audioCtx.createMediaElementSource(audio);
+            const gainNode = audioCtx.createGain();
+
+            // connetct audio nodes to graph
+
+            track.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
 
 
             // BEISPIEL CODE Kontrolle mit ChatGPT
@@ -119,6 +140,9 @@ function audioPlayer() {
             //        togglePlay(y);
             //    });
             // }
+
+
+            // add event listener for tracklist items
 
             tracklistItems.forEach((item, index) => {
                 item.addEventListener("click", () => {
@@ -132,10 +156,19 @@ function audioPlayer() {
 
             tracklistItems[trackidstart].classList.add("active");
 
+            // add event listener to Volume
+
+            volumeControl.addEventListener("input", () => {
+                console.log(
+                    audioCtx.state
+                );
+                console.log(volumeControl.value);
+                gainNode.gain.value = volumeControl.value;
+            });
 
             // add event listener to prev button
-            const prev = document.getElementById("prev");
-            prev.addEventListener("click", () => {
+
+            prevButton.addEventListener("click", () => {
                 if (trackid > 0) {
                     tracklistItems[trackidprevious].classList.remove("active");
                     trackid--;
@@ -148,8 +181,8 @@ function audioPlayer() {
             });
 
             // add event listener to next button
-            const next = document.getElementById("next");
-            next.addEventListener("click", () => {
+
+            nextButton.addEventListener("click", () => {
                 if (trackid < (myArr.length - 1)) {
                     tracklistItems[trackidprevious].classList.remove("active");
                     trackid++;
@@ -163,127 +196,41 @@ function audioPlayer() {
             });
 
             // add event listener to play button
-            button.addEventListener("click", () => {
+
+            playButton.addEventListener("click", () => {
                 if (audio.paused) {
                     play(myArr[trackid]);
+                    playButton.setAttribute("aria-checked", "true");
 
                 } else {
                     audio.pause();
-             //       button.classList.remove("active");
-                    document.querySelector(".toggle").textContent = "play";
+                    playButton.textContent = "play";
                 }
             });
 
-            // function togglePlay(trackid) {
-            //    if (audio.paused) {
-            //        play(myArr[trackid]);
-            //    } else {
-            //        audio.pause();
-            //        button.classList.remove("active");
-            //    }
-            // }
+            // If track ends
+
+            audio.addEventListener(
+                "ended",
+                () => {
+                    playButton.textContent = "play";
+                    playButton.setAttribute("aria-checked", "false");
+                },
+                false
+            );
 
             function play(trackid) {
                 document.querySelector("audio").src = "assets/audio/" + trackid.filename;
-                //document.querySelector(".toggle").textContent = trackid.trackname;
-                document.querySelector(".toggle").textContent = "stop";
+                playButton.textContent = "stop";
+
+                if (audioCtx.state === "suspended") {
+                    audioCtx.resume();
+                }
 
                 audio.play();
-            //    button.classList.add("active");
+                playButton.setAttribute("aria-checked", "true");
+
             }
         }
     };
 }
-
-//
-/* function audioPlayer2() {
-
-    // check if id audioplayer is loaded
-    // if so, run function
-    if (document.getElementById("audioplayer-2") != null) {
-
-        let myArr2;
-        let myObj2;
-        let myArrLenght2;
-
-        // start to load data for audioplayer
-        loadData();
-
-        // load json data
-        async function loadData() {
-
-            // check if an error occurs while loading
-
-            try {
-
-                // load and parse concert-dates.json
-
-                const response = await fetch("data/music.json");
-                const myObj2 = await response.json();
-
-                // set json data to an array
-
-                myArr2 = myObj2;
-
-            }
-
-            // if an error occured, write error message to html
-            catch (error) {
-                document.getElementById("audioplayer-2").innerHTML = "<p>Error loading data. Please try again later.</p>"
-                return
-            }
-
-            writeHtmlAudioPlayer(myArr2)
-        }
-
-        // construct html from the loaded date
-
-        function writeHtmlAudioPlayer(myArr) {
-
-            let x = 0;
-            let htmlAudioPlayer2 = "";
-
-            // chech if array has no entries
-            // if so, write a message into html
-
-            if (myArr.length == 0) {
-                htmlAudioPlayer2 += "<p>audio files yet. Want to upload some?</p>"
-            }
-            else
-
-                // if arrays has entries, construct html from array
-
-                for (x = 0; x < myArr.length; x++) {
-
-                    htmlAudioPlayer2 += "<li>";
-                    htmlAudioPlayer2 += "<audio src='assets/audio/" + myArr2[x].filename + "'></audio>";
-                    // htmlAudioPlayer2 += "<p>" + (x+1) + ". " + myArr[x].trackname + "</p>";
-                    htmlAudioPlayer2 += "<button class='toggle'>" + myArr2[x].trackname + "</button>";
-                    htmlAudioPlayer2 += "</li>";
-                }
-
-
-            // write constructed html into DOM
-
-            document.getElementById("audioplayer-2").innerHTML = htmlAudioPlayer2;
-
-            document.querySelectorAll(".grid-audio-player-2 li").forEach(li => {
-                const audio = li.querySelector("audio");
-
-                li.querySelector(".toggle").addEventListener("click", () => {
-                    if (audio.paused) {
-                        audio.play();
-                        // li.style.backgroundColor = "silver";
-                        li.querySelector(".toggle").style.backgroundColor = "silver";
-                    } else {
-                        audio.pause();
-                        // li.style.backgroundColor = "#333";
-                        li.querySelector(".toggle").style.backgroundColor = "#333";
-                    }
-                });
-            });
-
-        };
-    }
-}
-    */
