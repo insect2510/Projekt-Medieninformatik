@@ -319,3 +319,37 @@ section {
     ;
   }
 }
+
+footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--dark-grey);
+  color: var(--color-main);
+  padding: clamp(1rem, 3vw, 4rem) 5%;
+  column-gap: 5%;
+  row-gap: 5%;
+
+    @media only screen and (min-width: 576px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    ;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+    li {
+
+      a,
+      p {
+        color: var(--color-main);
+        text-decoration: none;
+        font-size: var(--font-size-text);
+        letter-spacing: 0.02em;
+        font-family: "Roboto";
+        font-weight: 200;
+      }
+    }
+  }
+}
