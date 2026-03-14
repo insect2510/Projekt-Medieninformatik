@@ -16,7 +16,7 @@
 
   --echo-black: #0a0b0d;
   --echo-surface: #181d29;
-  --text: #d8dde7;
+  --violette-light: #d8dde7;
   --text-second: #5f5b8c;
   --orange: #f1c27d;
   --accent-second: #cfaecf;
@@ -44,7 +44,7 @@
 
   /* highlight background */
 
-  --color-highlight-background: var(--light-grey);
+  --color-highlight-background: var(--violette-light);
 
 
   /* colors for feature section */
@@ -133,7 +133,8 @@ iframe {
 /* text style */
 a,
 p {
-  letter-spacing: 0.05em;
+  font-size: var(--font-size-text);
+  letter-spacing: 0.03em;
   font-family: "Roboto";
   font-weight: 400;
   line-height: 1.5;
@@ -262,11 +263,11 @@ h4 {
     }
 
     @media only screen and (min-width: 824px) {
-    font-size: 1.5rem;
-  }
+      font-size: 1.5rem;
+    }
   }
 
-  
+
 }
 
 .menu-open {
@@ -424,7 +425,7 @@ section {
 
     border: 1px solid var(--color-background);
     border-radius: 50%;
-    font-size: clamp(1.5rem, 2vw, 4rem);
+
     width: clamp(60px, 6vw, 160px);
     aspect-ratio: 1/1;
     justify-content: center;
@@ -433,7 +434,10 @@ section {
       background-color var(--transistion-time);
 
     i {
+      font-size: clamp(1.5rem, 2vw, 4rem);
       color: var(--color-background);
+      transition: color var(--transistion-time),
+        background-color var(--transistion-time);
 
     }
 
@@ -480,6 +484,79 @@ section {
   @media only screen and (min-width: 1200px) {
     grid-template-columns: 1fr 1fr;
     ;
+  }
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+  column-gap: 2rem;
+  color: var(--color-background);
+  background-color: var(--color-main);
+
+
+  img {
+    width: 100%
+  }
+
+  article {
+    padding-top: 0rem;
+
+  }
+
+  .card {
+
+    display: flex;
+    flex-direction: column;
+
+    p {
+      /*padding: 0 1rem 1rem 1rem;*/
+      /*background-color: var(--color-highlight-background);*/
+      align-self: start;
+    }
+
+    p:first-of-type {
+      padding-bottom: 1em;
+      /*background-color: var(--color-highlight-background);*/
+      width: 100%;
+      font-weight: 600;
+      text-transform: uppercase;
+      align-self: start;
+    }
+
+    a {
+      padding-top: 1em;
+      text-decoration: none;
+      ;
+      font-weight: 600;
+      display: block;
+      color: var(--color-background);
+
+
+
+    }
+
+  }
+
+
+  @media only screen and (min-width: 824px) {
+    grid-template-columns: 1fr 1fr;
+    ;
+
+    h3 {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    h3 {
+      grid-column-start: 1;
+      grid-column-end: 5;
+    }
   }
 }
 
