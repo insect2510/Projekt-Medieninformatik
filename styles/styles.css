@@ -216,11 +216,12 @@ h4 {
     display: flex;
     row-gap: 1rem;
     column-gap: 1rem;
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
 
     @media only screen and (min-width: 824px) {
       text-align: left;
+      padding: 2rem;
     }
   }
 
@@ -234,7 +235,14 @@ h4 {
 
   .flex-row {
     flex-direction: row;
+    align-self: center;
+
+    @media only screen and (min-width: 824px) {
+      align-self: self-start;
+    }
   }
+
+
 
   li {
     padding: 0;
@@ -308,6 +316,7 @@ h4 {
 main {
   margin-left: 0;
   transition: margin-left var(--transistion-time);
+  z-index: 0;
 
   @media only screen and (min-width: 824px) {
     margin-left: var(--menu-width);
@@ -322,9 +331,9 @@ main {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  position: sticky;
   top: 0px;
-  z-index: -10;
+  z-index: -1;
   background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url("../assets/img/hero/hero-6.jpg");
 
   @media only screen and (min-width: 824px) {
@@ -408,6 +417,7 @@ section {
   /*animation: appear 1s linear;*/
   scroll-snap-align: start;
   scroll-margin: 0;
+  background-color: var(--color-background);
 
 }
 
