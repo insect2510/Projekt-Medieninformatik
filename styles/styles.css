@@ -31,16 +31,21 @@
   /*++++++++++++++++++++++*/
 
   /* text colors */
-  --color-main: var(--white);
-
+  --color-text: var(--echo-black);
+  --color-title: var(--orange);
 
   /* background color */
-  --color-background: var(--echo-black);
+  --color-background: var(--white);
 
+  /* menu background color */
+  --color-menu-background: var(--echo-black);
+
+  /* menu text color */
+  --color-menu-text: var(--white);
 
 
   /* highlight color */
-  --color-highlight: var(--blue);
+  --color-highlight: var(--orange);
 
   /* highlight background */
 
@@ -51,27 +56,16 @@
   --color-text-feature:
     --color-feature-background:;
 
-  /* color for decoration */
-
-
   /* other variables */
 
   --font-size-text: clamp(1rem, 1vw, 1.15rem);
 
-  --font-size-hero: clamp(1.1rem, 8vw, 8rem);
-  --font-size-h1: clamp(1.1rem, 7vw, 7rem);
-  --font-size-h2: clamp(1.1rem, 6vw, 6rem);
-  --font-size-h3: clamp(1.05rem, 5vw, 6rem);
-  --font-size-h4: clamp(1rem, 42vw, 4rem);
+  --font-size-hero: clamp(1.1rem, 5vw, 8rem);
+  --font-size-h1: clamp(1.1rem, 4vw, 6rem);
+  --font-size-h2: clamp(1.1rem, 3vw, 5rem);
+  --font-size-h3: clamp(1.05rem, 3vw, 5rem);
+  --font-size-h4: clamp(1rem, 3vw, 4rem);
 
-  /*
-
-  --font-size-hero: calc(var(--font-size-h1) *1.618);
-  --font-size-h1: clamp(1.1rem, 2vw, 5.29rem);
-  --font-size-h2: clamp(1.1rem, 2vw, 3.27rem);
-  --font-size-h3: clamp(1.05rem, 2vw, 2.03rem);
-  --font-size-h4: clamp(1rem, 2vw, 1.25rem);
-*/
 
   /* font weight */
   --font-weight-hero: 800;
@@ -94,6 +88,9 @@
 
   /* fontsize laptop */
   --font-laptop: 1.2rem;
+
+  /* menu width */
+  --menu-width: 230px;
 
 }
 
@@ -128,12 +125,11 @@ iframe {
   width: 100%;
 }
 
-
-
 /* text style */
 a,
 p {
   font-size: var(--font-size-text);
+  color: var(--color-text);
   letter-spacing: 0.03em;
   font-family: "Roboto";
   font-weight: 400;
@@ -154,8 +150,8 @@ h4 {
 
 
 .top-row {
-  background-color: var(--color-background);
-  color: var(--color-main);
+  background-color: var(--color-menu-background);
+  color: var(--color-menu-text);
   padding: 1rem;
   top: 0;
   left: 0;
@@ -173,7 +169,7 @@ h4 {
   }
 
   a {
-    color: var(--color-main);
+    color: var(--color-menu-text);
     font-size: var(--font-size-text);
     text-transform: uppercase;
     text-decoration: none;
@@ -187,39 +183,37 @@ h4 {
 
 }
 
-
-
 .navigation-top {
 
-  background-color: var(--color-background);
+  background-color: var(--color-menu-background);
   position: fixed;
   top: 0px;
-  left: 0px;
-  /*width: 100%;*/
+  /*left: 0;*/
+  transform: translateX(-100vw);
   padding: 0rem;
   z-index: 1000;
-
   display: flex;
   flex-direction: column;
-
   height: 100%;
-  width: 0;
+  width: 100%;
   top: 0;
   left: 0;
   overflow-x: hidden;
-
   border-right: 1px solid lightgrey;
-
-  opacity: 1;
-  transition: 0.5s;
+  transition: width var(--transistion-time),
+    transform var(--transistion-time);
 
   @media only screen and (min-width: 824px) {
-    width: 250px;
+    width: var(--menu-width);
+    transform: translateX(0);
+  }
+
+  @media only screen and (min-width: 1024px) {
+    width: calc(var(--menu-width)*1.1);
   }
 
   ul {
     display: flex;
-    /* column-gap: 4rem;*/
     row-gap: 1rem;
     column-gap: 1rem;
     padding: 2rem;
@@ -242,47 +236,56 @@ h4 {
     flex-direction: row;
   }
 
-
-
   li {
     padding: 0;
   }
 
-
   a {
-    color: var(--color-main);
+    color: var(--color-menu-text);
     text-transform: uppercase;
     text-decoration: none;
     font-size: 1rem;
-    border-bottom: 1px solid var(--color-background);
-    transition: border-bottom var(--transistion-time);
+    border-bottom: 1px solid var(--color-menu-background);
+    transition: border-bottom var(--transistion-time),
+      font-size var(--transistion-time);
 
     &:hover {
-      border-bottom: 1px solid var(--color-main);
+      border-bottom: 1px solid var(--color-menu-text);
       ;
-    }
-
-    @media only screen and (min-width: 824px) {
-      font-size: 1.5rem;
     }
   }
 
+  @media only screen and (min-width: 824px) {
+    a {
+      font-size: 1.25em;
+    }
+  }
 
+  @media only screen and (min-width: 1024px) {
+    a {
+      font-size: 1.5em;
+    }
+  }
 }
 
 .menu-open {
   width: 100%;
+  transform: translateX(0);
 
   @media only screen and (min-width: 824px) {
-    width: 250px;
+    width: var(--menu-width);
+  }
+
+  @media only screen and (min-width: 1024px) {
+    width: calc(var(--menu-width)*1.1);
   }
 }
 
 .menu-button {
   font-size: var(--font-size-text);
-  color: var(--color-main);
-  background-color: var(--color-background);
-  border: 1px solid var(--color-background);
+  color: var(--color-menu-text);
+  background-color: var(--color-menu-background);
+  border: 1px solid var(--color-menu-background);
   padding: 0.5em;
   border: none;
   cursor: pointer;
@@ -290,8 +293,8 @@ h4 {
 
   &:hover {
 
-    color: var(--color-background);
-    background-color: var(--color-main);
+    color: var(--color-menu-background);
+    background-color: var(--color-menu-text);
   }
 
   @media only screen and (min-width: 824px) {
@@ -307,7 +310,7 @@ main {
   transition: margin-left var(--transistion-time);
 
   @media only screen and (min-width: 824px) {
-    margin-left: 250px;
+    margin-left: var(--menu-width);
     transition: margin-left var(--transistion-time);
   }
 
@@ -339,15 +342,19 @@ main {
     transform: translate(-50%, -50%);
     line-height: 1;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
     /* page title as hero text */
 
     h1 {
-      color: var(--color-main);
+      color: var(--color-title);
       text-transform: uppercase;
       font-size: var(--font-size-hero);
-      max-width: 50%;
-      Padding-left: 10%;
+      /*max-width: 100%;*/
+      Padding-left: 5%;
+      padding-right: 5%;
       text-align: left;
     }
 
@@ -367,17 +374,16 @@ main {
 
 h2 {
   padding-bottom: clamp(1rem, 3vw, 4rem);
-  color: var(--color-main);
+  color: var(--color-text);
   text-transform: uppercase;
   font-size: var(--font-size-h2);
-  color: var(--white);
   text-align: left;
 }
 
 
 h3 {
   padding-bottom: clamp(1rem, 3vw, 4rem);
-  color: var(--color-background);
+  color: var(--color-text);
   text-transform: uppercase;
   font-size: var(--font-size-h3);
   letter-spacing: 0.03em;
@@ -405,11 +411,6 @@ section {
 
 }
 
-.section {
-  background-color: var(--dark-background);
-
-}
-
 .pb-2 {
   padding-bottom: 2rem;
 }
@@ -421,9 +422,9 @@ section {
 
   li {
     display: flex;
-    background-color: var(--color-main);
+    background-color: var(--color-background);
 
-    border: 1px solid var(--color-background);
+    border: 1px solid var(--color-text);
     border-radius: 50%;
 
     width: clamp(60px, 6vw, 160px);
@@ -435,7 +436,7 @@ section {
 
     i {
       font-size: clamp(1.5rem, 2vw, 4rem);
-      color: var(--color-background);
+      color: var(--color-text);
       transition: color var(--transistion-time),
         background-color var(--transistion-time);
 
@@ -443,13 +444,9 @@ section {
 
     &:hover {
       color: var(--color-main);
-      background-color: var(--color-background);
+      background-color: var(--color-highlight);
       cursor: pointer;
 
-      i {
-        color: var(--color-main);
-
-      }
     }
 
 
@@ -463,9 +460,6 @@ section {
   row-gap: 2rem;
   column-gap: 5%;
   justify-items: center;
-  color: var(--color-background);
-  background-color: var(--color-main);
-
 
   img {
     width: 100%
@@ -492,9 +486,6 @@ section {
   grid-template-columns: 1fr;
   row-gap: 2rem;
   column-gap: 2rem;
-  color: var(--color-background);
-  background-color: var(--color-main);
-
 
   img {
     width: 100%
@@ -531,10 +522,7 @@ section {
       ;
       font-weight: 600;
       display: block;
-      color: var(--color-background);
-
-
-
+      color: var(--color-text);
     }
 
   }
@@ -563,8 +551,8 @@ section {
 footer {
   display: grid;
   grid-template-columns: 1fr;
-  background-color: var(--color-background);
-  color: var(--color-main);
+  background-color: var(--color-menu-background);
+  color: var(--color-menu-text);
   padding: clamp(1rem, 3vw, 4rem) 5%;
   column-gap: 5%;
   row-gap: 2rem;
@@ -592,19 +580,19 @@ footer {
 
       a,
       p {
-        color: var(--color-main);
+        color: var(--color-menu-text);
         text-decoration: none;
       }
 
       a {
-        color: var(--color-main);
+        color: var(--color-menu-text);
         text-decoration: none;
         font-size: var(--font-size-text);
-        border-bottom: 1px solid var(--color-background);
+        border-bottom: 1px solid var(--color-menu-background);
         transition: border-bottom var(--transistion-time);
 
         &:hover {
-          border-bottom: 1px solid var(--color-main);
+          border-bottom: 1px solid var(--color-menu-text);
           ;
         }
       }
