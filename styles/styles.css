@@ -8,11 +8,9 @@
   /* theme colors */
   --white: #f9f9f9;
 
-  --black: #111;
-  --dark-grey: #333;
-  --light-grey: #aaaaaa;
-
-  --blue: hsl(200, 81%, 48%);
+  --black:red;
+  --dark-grey: green;
+  --light-grey: blue;
 
   --echo-black: #0a0b0d;
   --echo-surface: #181d29;
@@ -43,7 +41,6 @@
   /* menu text color */
   --color-menu-text: var(--white);
 
-
   /* highlight color */
   --color-highlight: var(--orange);
 
@@ -52,14 +49,8 @@
   --color-highlight-background: var(--violette-light);
 
 
-  /* colors for feature section */
-  --color-text-feature:
-    --color-feature-background:;
-
-  /* other variables */
-
+  /* text sizes */
   --font-size-text: clamp(1rem, 1vw, 1.15rem);
-
   --font-size-hero: clamp(1.1rem, 5vw, 8rem);
   --font-size-h1: clamp(1.1rem, 4vw, 6rem);
   --font-size-h2: clamp(1.1rem, 3vw, 5rem);
@@ -91,6 +82,14 @@
 
   /* menu width */
   --menu-width: 230px;
+
+  /***************************/
+  /*                         */
+  /* break points            */
+  /*                         */
+  /* 824px / 1024px / 1200px */
+  /*                         */
+  /***************************/
 
 }
 
@@ -243,7 +242,6 @@ h4 {
   }
 
 
-
   li {
     padding: 0;
   }
@@ -361,24 +359,14 @@ main {
       color: var(--color-title);
       text-transform: uppercase;
       font-size: var(--font-size-hero);
-      /*max-width: 100%;*/
       Padding-left: 5%;
       padding-right: 5%;
       text-align: left;
     }
 
-    /* second line hero text 
-    p {
-      color: var(--color-main);
-      padding-bottom: 0rem;
-    }
-      */
-
   }
 
 }
-
-
 
 
 h2 {
@@ -399,7 +387,7 @@ h3 {
   text-align: left;
 }
 
-
+/*
 @keyframes appear {
   from {
     opacity: 0;
@@ -411,12 +399,13 @@ h3 {
     scale: 1;
   }
 }
+*/
 
 section {
   padding: clamp(1rem, 6vw, 8rem) 5%;
-  /*animation: appear 1s linear;*/
+ /* animation: appear 1s linear;
   scroll-snap-align: start;
-  scroll-margin: 0;
+  scroll-margin: 0;*/
   background-color: var(--color-background);
 
 }
@@ -445,7 +434,7 @@ section {
       background-color var(--transistion-time);
 
     i {
-      font-size: clamp(1.5rem, 2vw, 4rem);
+      font-size: clamp(1.25rem, 2vw, 4rem);
       color: var(--color-text);
       transition: color var(--transistion-time),
         background-color var(--transistion-time);
@@ -458,8 +447,6 @@ section {
       cursor: pointer;
 
     }
-
-
 
   }
 }
@@ -485,7 +472,7 @@ section {
     margin: auto;
   }
 
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 1024px) {
     grid-template-columns: 1fr 1fr;
     ;
   }
@@ -512,14 +499,11 @@ section {
     flex-direction: column;
 
     p {
-      /*padding: 0 1rem 1rem 1rem;*/
-      /*background-color: var(--color-highlight-background);*/
       align-self: start;
     }
 
     p:first-of-type {
       padding-bottom: 1em;
-      /*background-color: var(--color-highlight-background);*/
       width: 100%;
       font-weight: 600;
       text-transform: uppercase;
@@ -576,7 +560,7 @@ footer {
     grid-template-columns: 1fr 1fr;
   }
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 1200px) {
     grid-template-columns: 1fr 1fr 1fr;
     ;
   }

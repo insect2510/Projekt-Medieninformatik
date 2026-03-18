@@ -1,11 +1,8 @@
 :root {
 
     --color-player-heading: var(--color-text);
-
     --color-player-background: var(--color-background);
-
     --color-player-text: var(--color-text);
-
     --color-player-button: var(--color-text);
     --color-player-button-hover: var(--color-highlight);
 
@@ -18,25 +15,19 @@
     margin-right: auto;
     width: fit-content;
 
-    h2 {
-        padding-left: 0;
-        color: var(--color--player-heading);
-    }
-
     .tracklist {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 16px;
         padding: 0rem;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 2rem;
+        margin-bottom: 32px;
 
         li {
             display: grid;
             grid-template-columns: 1fr auto;
         }
-
 
         /* tracklist items as buttons */
 
@@ -60,9 +51,7 @@
 
             &.active {
                 font-weight: 600;
-
             }
-
         }
 
         /* track lenght */
@@ -74,9 +63,7 @@
             line-height: 1;
             font-family: "Roboto";
             align-self: flex-end;
-
         }
-
 
     }
 
@@ -152,11 +139,11 @@
             color: var(--color-player-button);
             border: 1px solid var(--color-player-button);
             border-radius: 50%;
-            font-size: clamp(1.5rem, 2vw, 4rem);
+            font-size: clamp(1.25rem, 2vw, 4rem);
             font-family: "Roboto";
             font-weight: 600;
             text-transform: uppercase;
-            width: clamp(80px, 6vw, 160px);
+            width: clamp(60px, 6vw, 160px);
             aspect-ratio: 1/1;
             justify-content: center;
             align-items: center;

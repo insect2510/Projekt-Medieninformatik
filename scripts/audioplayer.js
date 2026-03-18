@@ -58,18 +58,16 @@ function audioPlayer() {
             // if so, write a message into html
 
             if (myArr.length == 0) {
-                htmlAudioPlayer += "<p>audio files yet. Want to upload some?</p>"
+                htmlAudioPlayer += "<p>no audio files yet. Want to upload some?</p>"
             }
             else
 
                 // if arrays has entries, construct html
                 // contruct tracklist from array
 
-                htmlAudioPlayer += "<h2>Listen</h2>";
             htmlAudioPlayer += "<ol class='tracklist'>";
             for (y = 0; y < myArr.length; y++) {
                 htmlAudioPlayer += "<li><button>" + (y + 1) + ". " + myArr[y].trackname + "</button><p>" + myArr[y].length + "</p></li> ";
-
             }
             htmlAudioPlayer += "</ol>";
 
@@ -85,7 +83,7 @@ function audioPlayer() {
             htmlAudioPlayer += "<option value='0' label='min'>";
             htmlAudioPlayer += "<option value='1' label='max'>";
             htmlAudioPlayer += "</datalist>";
-             htmlAudioPlayer += "<i class='fa-solid fa-volume-high'></i>";
+            htmlAudioPlayer += "<i class='fa-solid fa-volume-high'></i>";
             htmlAudioPlayer += "</li>";
 
             // player buttons
@@ -134,16 +132,6 @@ function audioPlayer() {
 
             track.connect(gainNode);
             gainNode.connect(audioCtx.destination);
-
-
-            // BEISPIEL CODE Kontrolle mit ChatGPT
-
-            //for (y = 0; y < myArr.length; y++) {
-            //    tracklistItems[y].addEventListener("click", () => {
-            //        togglePlay(y);
-            //    });
-            // }
-
 
             // add event listener for tracklist items
 
