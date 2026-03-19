@@ -11,14 +11,7 @@
 
 .audio-player {
 
-    /* margin-left: auto;
-    margin-right: auto;*/
     width: fit-content;
-    /* padding: 10%;
-    border: 1px solid black;*/
-
-
-
 
     .tracklist {
         display: grid;
@@ -63,12 +56,12 @@
 
         /* track lenght */
 
-
         p {
             color: var(--color-player-text);
             font-weight: 200;
             line-height: 1;
             font-family: "Roboto";
+            padding-bottom: 0;
             align-self: flex-end;
         }
 
@@ -106,13 +99,15 @@
             height: 20px;
             background: var(--color-player-background);
             outline: solid 1px var(--color-player-button);
-            opacity: 0.7;
+
             -webkit-transition: .2s;
-            transition: opacity .2s;
+            transition:
+                background-color var(--transistion-time) ease-in-out;
         }
 
         .slider:hover {
-            opacity: 1;
+            background-color: var(--color-player-button-hover);
+            cursor: pointer;
         }
 
         .slider::-webkit-slider-thumb {
@@ -157,22 +152,13 @@
             margin-left: auto;
             margin-right: auto;
             align-items: center;
-            /* filter: drop-shadow(1px 1px 25px);*/
-            transition: color var(--transistion-time),
-                /* filter var(--transistion-time),*/
-                background-color var(--transistion-time);
+            transition:
+                background-color var(--transistion-time) ease-in-out;
 
             &:hover {
                 background-color: var(--color-player-button-hover);
                 cursor: pointer;
-                /*   filter: drop-shadow(1px 1px 5px);*/
             }
-
         }
-
-        .active {
-            background-color: silver;
-        }
-
     }
 }

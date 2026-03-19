@@ -45,8 +45,6 @@
   --color-highlight: var(--orange);
 
   /* highlight background */
-
-  /* --color-highlight-background: var(--violette-light);*/
   --color-highlight-background: var(--light-grey);
 
 
@@ -96,8 +94,6 @@
   /***************************/
 
 }
-
-
 
 body {
   margin: 0px;
@@ -162,8 +158,7 @@ h4 {
 
 
 h2 {
-  /*padding-bottom: clamp(1rem, 3vw, 4rem);*/
-  padding-bottom: clamp(16px, 2vw, 48px);
+  margin-bottom: clamp(16px, 2vw, 48px);
   color: var(--color-text);
   text-transform: uppercase;
   font-size: var(--font-size-h2);
@@ -171,15 +166,13 @@ h2 {
 }
 
 h3 {
-  /*padding-bottom: clamp(1rem, 3vw, 4rem);*/
-  padding-bottom: clamp(16px, 2vw, 48px);
+  margin-bottom: clamp(16px, 2vw, 48px);
   color: var(--color-text);
   text-transform: uppercase;
   font-size: var(--font-size-h3);
   letter-spacing: 0.03em;
   text-align: left;
 }
-
 
 
 /***************************/
@@ -232,25 +225,24 @@ h3 {
   background-color: var(--color-menu-background);
   position: fixed;
   top: 0px;
+  display: flex;
+  flex-direction: column;
   transform: translateX(-100vw);
   padding: 0rem;
   z-index: 1000;
-  display: flex;
-  flex-direction: column;
   height: 100%;
-  width: 100%;
+  width: 0%;
   top: 0;
   left: 0;
   overflow-x: hidden;
   border-right: 1px solid lightgrey;
-  visibility: hidden;
-  transition: width var(--transistion-time),
-    transform var(--transistion-time);
+  transition: width var(--transistion-time) ease-in-out,
+    transform var(--transistion-time) ease-in-out;
 
   @media only screen and (min-width: 824px) {
     width: var(--menu-width);
     transform: translateX(0);
-    visibility: visible;
+
   }
 
   @media only screen and (min-width: 1024px) {
@@ -298,8 +290,8 @@ h3 {
     text-decoration: none;
     font-size: 1rem;
     border-bottom: 1px solid var(--color-menu-background);
-    transition: border-bottom var(--transistion-time),
-      font-size var(--transistion-time);
+    transition: border-bottom var(--transistion-time) ease-in-out,
+      font-size var(--transistion-time) ease-in-out;
 
     &:hover {
       border-bottom: 1px solid var(--color-menu-text);
@@ -326,6 +318,8 @@ h3 {
   width: 100%;
   transform: translateX(0);
   visibility: visible;
+  display: flex;
+  flex-direction: column;
 
   @media only screen and (min-width: 824px) {
     width: var(--menu-width);
@@ -345,7 +339,9 @@ h3 {
   padding: 0.5em;
   border: none;
   cursor: pointer;
-  transition: rotate var(--transistion-time), color var(--transistion-time), background-color var(--transistion-time);
+  transition: rotate var(--transistion-time) ease-in-out,
+    color var(--transistion-time) ease-in-out,
+    background-color var(--transistion-time) ease-in-out;
 
   &:hover {
 
@@ -358,7 +354,6 @@ h3 {
   }
 
 }
-
 
 
 main {
@@ -377,7 +372,6 @@ main {
 
 }
 
-
 /***************************/
 /*                         */
 /*   hero section          */
@@ -393,10 +387,14 @@ main {
   position: sticky;
   top: 0px;
   z-index: -1;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url("../assets/img/hero/hero-6.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url("../assets/img/hero/hero-824.webp");
 
   @media only screen and (min-width: 824px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url("../assets/img/hero/hero-6.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url("../assets/img/hero/hero-1024.webp");
+  }
+
+  @media only screen and (min-width: 1024px) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url("../assets/img/hero/hero-1920.webp");
   }
 
 
@@ -429,31 +427,20 @@ main {
 
 }
 
-
-/*
-@keyframes appear {
-  from {
-    opacity: 0;
-    scale: 0.5;
-  }
-
-  to {
-    opacity: 1;
-    scale: 1;
-  }
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  
+      background-color: var(--color-background);
 }
-*/
+
 section {
+    max-width: 2300px;
   padding: var(--vertical-padding) var(--side-padding);
-  /* animation: appear 1s linear;*/
-  scroll-snap-align: start;
-  scroll-margin: 0;
-  background-color: var(--color-background);
+    margin-left: auto;
+  margin-right: auto;
 
-}
 
-.pb-2 {
-  padding-bottom: 2rem;
 }
 
 .shop-buttons {
@@ -472,8 +459,8 @@ section {
     aspect-ratio: 1/1;
     justify-content: center;
     align-items: center;
-    transition: color var(--transistion-time),
-      background-color var(--transistion-time);
+    transition: color var(--transistion-time) ease-in-out,
+      background-color var(--transistion-time) ease-in-out;
 
     a {
 
@@ -484,8 +471,8 @@ section {
     i {
       font-size: clamp(1.25rem, 2vw, 4rem);
       color: var(--color-text);
-      transition: color var(--transistion-time),
-        background-color var(--transistion-time);
+      transition: color var(--transistion-time) ease-in-out,
+        background-color var(--transistion-time) ease-in-out;
 
     }
 
@@ -507,7 +494,8 @@ section {
   justify-items: center;
 
   img {
-    width: 100%
+    width: 100%;
+    aspect-ratio: 1/1;
   }
 
   article {
@@ -519,6 +507,12 @@ section {
   p {
     font-size: var(--font-size-text);
     margin: auto;
+    padding-bottom: 1em;
+  }
+
+  .release-meta {
+
+    padding-bottom: 0;
   }
 
   @media only screen and (min-width: 1024px) {
@@ -529,12 +523,15 @@ section {
 
 
 article.grid-2-feature-box {
-  /* background-color: var(--color-highlight-background);*/
+
   width: fit-content;
   border: 1px solid var(--color-highlight-background);
-  /* filter: drop-shadow(1px 1px 25px);*/
-
   padding: 10%;
+  filter: drop-shadow(1px 1px 20px);
+
+  h2 {
+    background-color: var(--color-background);
+  }
 
 }
 
@@ -604,6 +601,7 @@ article.grid-2-feature-box {
 }
 
 footer {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   background-color: var(--color-menu-background);
@@ -644,7 +642,7 @@ footer {
         text-decoration: none;
         font-size: var(--font-size-text);
         border-bottom: 1px solid var(--color-menu-background);
-        transition: border-bottom var(--transistion-time);
+        transition: border-bottom var(--transistion-time) ease-in-out;
 
         &:hover {
           border-bottom: 1px solid var(--color-menu-text);
