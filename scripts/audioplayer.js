@@ -75,7 +75,7 @@ function audioPlayer() {
 
             // volume control
 
-            htmlAudioPlayer += "<ul class='play-buttons'>";
+            htmlAudioPlayer += "<ul class='audio-player-control'>";
             htmlAudioPlayer += "<li class='volume'>";
             htmlAudioPlayer += "<i class='fa-solid fa-volume-low'></i>";
             htmlAudioPlayer += "<input id='volume' class='slider' type='range' name='volume' min='0' max='1' value='0.5' list='gain-vals' step='0.01' data-action='volume' aria-label='volume control'>";
@@ -84,14 +84,13 @@ function audioPlayer() {
             htmlAudioPlayer += "<option value='1' label='max'>";
             htmlAudioPlayer += "</datalist>";
             htmlAudioPlayer += "<i class='fa-solid fa-volume-high'></i>";
-            htmlAudioPlayer += "</li>";
+            htmlAudioPlayer += "</li>";        
 
             // player buttons
-
+  
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<button id='prevButton' aria-label='skip to previous track'>";
             htmlAudioPlayer += "<i class='fa-solid fa-chevron-left'></i>";
-            htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";

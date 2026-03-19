@@ -11,9 +11,14 @@
 
 .audio-player {
 
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto;*/
     width: fit-content;
+    /* padding: 10%;
+    border: 1px solid black;*/
+
+
+
 
     .tracklist {
         display: grid;
@@ -41,12 +46,14 @@
             font-weight: 200;
             width: fit-content;
             text-transform: uppercase;
+
             transition:
                 padding var(--transistion-time);
 
             &:hover {
                 padding-left: 1rem;
                 cursor: pointer;
+
             }
 
             &.active {
@@ -69,7 +76,7 @@
 
     /* player controls */
 
-    .play-buttons {
+    .audio-player-control {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 2rem;
@@ -92,6 +99,7 @@
 
         .slider {
             -webkit-appearance: none;
+            appearance: none;
             margin-left: 1rem;
             margin-right: 1rem;
             width: 100%;
@@ -143,16 +151,21 @@
             font-family: "Roboto";
             font-weight: 600;
             text-transform: uppercase;
-            width: clamp(60px, 6vw, 160px);
+            width: clamp(60px, 5vw, 160px);
             aspect-ratio: 1/1;
             justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
             align-items: center;
+            /* filter: drop-shadow(1px 1px 25px);*/
             transition: color var(--transistion-time),
+                /* filter var(--transistion-time),*/
                 background-color var(--transistion-time);
 
             &:hover {
                 background-color: var(--color-player-button-hover);
                 cursor: pointer;
+                /*   filter: drop-shadow(1px 1px 5px);*/
             }
 
         }
