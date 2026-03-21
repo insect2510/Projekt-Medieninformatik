@@ -545,7 +545,7 @@ section {
 }
 
 
-article.grid-2-feature-box {
+.grid-2-feature-box {
 
   width: fit-content;
   border: 1px solid var(--color-highlight-background);
