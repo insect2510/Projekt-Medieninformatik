@@ -5,6 +5,7 @@
     --color-player-text: var(--color-text);
     --color-player-button: var(--color-text);
     --color-player-button-hover: var(--color-highlight);
+    --font-size-tracklist: clamp(1rem, 1vw, 2rem);
 
 }
 
@@ -29,11 +30,11 @@
 
         /* tracklist items as buttons */
 
-        button {
+        .tracklist-items {
             background-color: var(--color-player-background);
             color: var(--color-player-text);
             border: none;
-            font-size: clamp(1rem, 1vw, 2rem);
+            font-size: var(--font-size-tracklist);
             font-family: "Roboto";
             line-height: 1;
             font-weight: 200;
@@ -136,7 +137,7 @@
 
         /* play buttons */
 
-        button {
+        .control-buttons {
             display: flex;
             background-color: var(--color-player-background);
             color: var(--color-player-button);
@@ -160,5 +161,16 @@
                 cursor: pointer;
             }
         }
+
+        .not-skippable {
+            opacity: 0.8;
+            cursor: none;
+
+            &:hover {
+                background-color: var(--color-player-background);
+            }
+
+        }
     }
+
 }

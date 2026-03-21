@@ -65,9 +65,9 @@ function audioPlayer() {
                 // if arrays has entries, construct html
                 // contruct tracklist from array
 
-            htmlAudioPlayer += "<ol class='tracklist'>";
+                htmlAudioPlayer += "<ol class='tracklist' aria-label='tracklist of the music album'>";
             for (y = 0; y < myArr.length; y++) {
-                htmlAudioPlayer += "<li><button>" + (y + 1) + ". " + myArr[y].trackname + "</button><p>" + myArr[y].length + "</p></li> ";
+                htmlAudioPlayer += "<li><button class='tracklist-items'>" + (y + 1) + ". " + myArr[y].trackname + "</button><p>" + myArr[y].length + "</p></li> ";
             }
             htmlAudioPlayer += "</ol>";
 
@@ -75,7 +75,7 @@ function audioPlayer() {
 
             // volume control
 
-            htmlAudioPlayer += "<ul class='audio-player-control'>";
+            htmlAudioPlayer += "<ul class='audio-player-control' aria-label='control buttons of the audio player'>";
             htmlAudioPlayer += "<li class='volume'>";
             htmlAudioPlayer += "<i class='fa-solid fa-volume-low'></i>";
             htmlAudioPlayer += "<input id='volume' class='slider' type='range' name='volume' min='0' max='1' value='0.5' list='gain-vals' step='0.01' data-action='volume' aria-label='volume control'>";
@@ -84,23 +84,23 @@ function audioPlayer() {
             htmlAudioPlayer += "<option value='1' label='max'>";
             htmlAudioPlayer += "</datalist>";
             htmlAudioPlayer += "<i class='fa-solid fa-volume-high'></i>";
-            htmlAudioPlayer += "</li>";        
+            htmlAudioPlayer += "</li>";
 
             // player buttons
-  
+
             htmlAudioPlayer += "<li>";
-            htmlAudioPlayer += "<button id='prevButton' aria-label='skip to previous track'>";
+            htmlAudioPlayer += "<button id='prevButton' aria-label='skip to previous track' class='control-buttons not-skippable' aria-disabled='true'>";
             htmlAudioPlayer += "<i class='fa-solid fa-chevron-left'></i>";
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
             htmlAudioPlayer += "<audio src='assets/audio/" + myArr[trackidstart].filename + "'></audio>";
-            htmlAudioPlayer += "<button id='playButton' class='toggle' role='switch' aria-checked='false' aria-label='play and pause the audio'>";
+            htmlAudioPlayer += "<button id='playButton' class='toggle control-buttons' role='switch' aria-checked='false' aria-label='play and pause the audio'>";
             htmlAudioPlayer += "<i class='fa-solid fa-play'></i>";
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
-            htmlAudioPlayer += "<button id='nextButton' aria-label='skip to next track'>";
+            htmlAudioPlayer += "<button id='nextButton' aria-label='skip to next track' class='control-buttons'>";
             htmlAudioPlayer += "<i class='fa-solid fa-chevron-right'></i>";
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
@@ -165,8 +165,6 @@ function audioPlayer() {
                     trackidprevious = trackid;
                     tracklistItems[trackid].classList.add("active");
                     play(myArr[trackid]);
-                } else {
-                    prevButton.classList.remove("active");
                 }
             });
 
@@ -179,8 +177,6 @@ function audioPlayer() {
                     trackidprevious = trackid;
                     tracklistItems[trackid].classList.add("active");
                     play(myArr[trackid]);
-                } else {
-                    nextButton.classList.remove("active");
                 }
             });
 
@@ -196,7 +192,7 @@ function audioPlayer() {
                 }
             });
 
-            // If track ends
+            // If track ends, stop audio
 
             audio.addEventListener(
                 "ended",
@@ -207,8 +203,49 @@ function audioPlayer() {
                 false
             );
 
-            function play(trackid) {
-                document.querySelector("audio").src = "assets/audio/" + trackid.filename;
+            // play a track
+
+            function play(track) {
+
+                // first track disable previous button
+
+                if (track.trackid == 1) {
+                    prevButton.classList.add("not-skippable");
+                    prevButton.setAttribute("aria-disabled", "true");
+
+                    if (nextButton.classList.contains("not-skippable")) {
+                        nextButton.classList.remove("not-skippable");
+                        nextButton.setAttribute("aria-disabled", "false");
+                    }
+                }
+
+                // last track disable next butto
+
+                if (track.trackid == 8) {
+                    nextButton.classList.add("not-skippable");
+                    nextButton.setAttribute("aria-disabled", "true");
+
+                    if (prevButton.classList.contains("not-skippable")) {
+                        prevButton.classList.remove("not-skippable");
+                        prevButton.setAttribute("aria-disabled", "false");
+                    }
+                }
+
+                // if its track in between first and last check if next or previous button is disabled
+
+                if (track.trackid != 1 && track.trackid != 8) {
+
+                    if (prevButton.classList.contains("not-skippable")) {
+                        prevButton.classList.remove("not-skippable");
+                        prevButton.setAttribute("aria-disabled", "false");
+                    }
+                    if (nextButton.classList.contains("not-skippable")) {
+                        nextButton.classList.remove("not-skippable");
+                        nextButton.setAttribute("aria-disabled", "false");
+                    }
+                }
+
+                document.querySelector("audio").src = "assets/audio/" + track.filename;
                 playButton.innerHTML = "<i class='fa-solid fa-stop'></i>";
 
                 if (audioCtx.state === "suspended") {
