@@ -4,7 +4,10 @@
     --color-player-background: var(--color-background);
     --color-player-text: var(--color-text);
     --color-player-button: var(--color-text);
+    --color-player-button-background: var(--color-background);
     --color-player-button-hover: var(--color-highlight);
+    --color-player-button-active: var(--color-player-button);
+    --color-player-button-active-text: var(--color-player-background);
     --font-size-tracklist: clamp(1rem, 1vw, 2rem);
 
 }
@@ -128,7 +131,7 @@
         }
 
         label {
-            color: var(--color-player-text);
+            color: var(--color-player-button);
             font-size: clamp(1rem, 1vw, 2rem);
             font-family: "Roboto";
             font-weight: 600;
@@ -154,11 +157,21 @@
             margin-right: auto;
             align-items: center;
             transition:
-                background-color var(--transistion-time) ease-in-out;
+                background-color var(--transistion-time) ease-in-out,
+                color var(--transistion-time) ease-in-out;
 
             &:hover {
                 background-color: var(--color-player-button-hover);
                 cursor: pointer;
+            }
+        }
+
+        .audio-is-playing {
+            background-color: var(--color-player-button-active);
+            color: var(--color-player-button-active-text);
+
+            &:hover {
+                color: var(--color-player-button);
             }
         }
 

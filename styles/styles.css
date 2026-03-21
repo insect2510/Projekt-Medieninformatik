@@ -51,12 +51,12 @@
 
 
   /* text sizes */
-  --font-size-text: clamp(1rem, 1vw, 1.15rem);
+  --font-size-text: clamp(1rem, 1.25vw, 1.5rem);
   --font-size-hero: clamp(1.1rem, 5vw, 8rem);
   --font-size-h1: clamp(1.1rem, 4vw, 6rem);
   --font-size-h2: clamp(1.1rem, 3vw, 5rem);
   --font-size-h3: clamp(1.05rem, 3vw, 5rem);
-  --font-size-h4: clamp(1rem, 3vw, 4rem);
+  --font-size-h4: clamp(1rem, 2vw, 2rem);
 
 
   /* font weight */
@@ -67,7 +67,7 @@
   --transistion-time: 350ms;
 
   /* maximal width for content */
- /* --maxwidth: 1300px;
+  /* --maxwidth: 1300px;
 
   /* side spaceing for content */
 
@@ -166,6 +166,11 @@ h3 {
   text-align: left;
 }
 
+h4 {
+  font-size: var(--font-size-h4);
+  text-transform: uppercase;
+}
+
 
 /***************************/
 /*                         */
@@ -230,7 +235,7 @@ h3 {
   left: 0;
   overflow-x: hidden;
   padding-top: 1rem;
- 
+
   transition: width var(--transistion-time) ease-in-out,
     padding-top var(--transistion-time) ease-in-out,
     transform var(--transistion-time) ease-in-out;
@@ -244,7 +249,7 @@ h3 {
     width: var(--menu-width);
     transform: translateX(0);
     margin-top: 0px;
-     /*border-right: 1px solid lightgrey;*/
+    /*border-right: 1px solid lightgrey;*/
   }
 
   @media only screen and (min-width: 1024px) {
@@ -583,11 +588,10 @@ section {
       align-self: start;
     }
 
-    p:first-of-type {
+    h4 {
       padding-bottom: 1em;
       width: 100%;
-      font-weight: 600;
-      text-transform: uppercase;
+
       align-self: start;
     }
 
@@ -635,12 +639,9 @@ footer {
 
 
   @media only screen and (min-width: 824px) {
-    margin-left: var(--menu-width);
+    margin-left: var(--menu-width);    grid-template-columns: 1fr 1fr;
   }
 
-  @media only screen and (min-width: 824px) {
-    grid-template-columns: 1fr 1fr;
-  }
 
   @media only screen and (min-width: 1024px) {
     grid-template-columns: 1fr 1fr 1fr;
@@ -671,10 +672,6 @@ footer {
           border-bottom: 1px solid var(--color-menu-text);
           ;
         }
-      }
-
-      h4 {
-        text-transform: uppercase;
       }
     }
   }

@@ -63,7 +63,7 @@ function audioPlayer() {
             else
 
                 // if arrays has entries, construct html
-                // contruct tracklist from array
+                // construct tracklist from array
 
                 htmlAudioPlayer += "<ol class='tracklist' aria-label='tracklist of the music album'>";
             for (y = 0; y < myArr.length; y++) {
@@ -189,6 +189,7 @@ function audioPlayer() {
                 } else {
                     audio.pause();
                     playButton.innerHTML = "<i class='fa-solid fa-play'></i>";
+                     playButton.classList.remove("audio-is-playing");
                 }
             });
 
@@ -199,6 +200,7 @@ function audioPlayer() {
                 () => {
                     playButton.textContent = "play";
                     playButton.setAttribute("aria-checked", "false");
+                    playButton.classList.remove("audio-is-playing");
                 },
                 false
             );
@@ -254,6 +256,7 @@ function audioPlayer() {
 
                 audio.play();
                 playButton.setAttribute("aria-checked", "true");
+                playButton.classList.add("audio-is-playing");
 
             }
         }
