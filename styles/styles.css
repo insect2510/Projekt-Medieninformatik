@@ -9,16 +9,12 @@
   --white: #f9f9f9;
   --light-grey: #e9e9e9;
 
-  --black: red;
-  --dark-grey: green;
-
   --echo-black: #0a0b0d;
   --echo-surface: #181d29;
   --violette-light: #d8dde7;
   --text-second: #5f5b8c;
   --orange: #f1c27d;
   --accent-second: #cfaecf;
-
 
 
 
@@ -46,6 +42,9 @@
 
   /* highlight background */
   --color-highlight-background: var(--light-grey);
+
+  /* navigation buttons */
+  --color-navigation-button-background: var(--violette-light);
 
 
   /* text sizes */
@@ -654,5 +653,35 @@ footer {
         text-transform: uppercase;
       }
     }
+  }
+}
+
+
+/* Scroll to Top Button */
+
+
+#ScrollToTopButton {
+  display: none;
+  /* Hidden by default */
+  height: 48px;
+  width: 48px;
+  position: fixed;
+  bottom: 2rem;
+  right: 3vw;
+  z-index: 99;
+  padding-top: 2px;
+  text-align: center;
+  border: solid 2px;
+  border-radius: 50%;
+  background-color: var(--color-navigation-button-background);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: var(--font-mobile);
+  opacity: 0.8;
+  transition: var(--transistion-time);
+
+  &:hover {
+    background-color: var(--color-highlight);
+    opacity: 1;
   }
 }
