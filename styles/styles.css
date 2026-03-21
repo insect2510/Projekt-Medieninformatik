@@ -406,14 +406,14 @@ main {
   position: sticky;
   top: 0px;
   z-index: -1;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url("../assets/img/hero/hero-824.webp");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), url("../assets/img/hero/hero-824.webp");
 
   @media only screen and (min-width: 824px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url("../assets/img/hero/hero-1024.webp");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), url("../assets/img/hero/hero-1024.webp");
   }
 
   @media only screen and (min-width: 1024px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url("../assets/img/hero/hero-1920.webp");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), url("../assets/img/hero/hero-1920.webp");
   }
 
 
@@ -421,9 +421,10 @@ main {
 
   .hero-text {
     position: absolute;
-    top: 60%;
+    margin-top: 7.5rem;
+    top: 0%;
     left: 50%;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -0%);
     line-height: 1;
     width: 100%;
     display: flex;
