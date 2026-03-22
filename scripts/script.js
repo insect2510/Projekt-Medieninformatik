@@ -3,6 +3,30 @@
 
 scrollToTop();
 
+
+const sections = document.querySelectorAll("section");
+const menuLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+
+    if (window.scrollY >= sectionTop - 100) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  menuLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+
 function openNav() {
   document.getElementById("navigation-side").classList.add("menu-open");
 }

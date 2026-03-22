@@ -308,6 +308,7 @@ h4 {
     text-transform: uppercase;
     text-decoration: none;
     font-size: 1rem;
+    font-weight: 300;
     border-bottom: 1px solid var(--color-menu-background);
     transition: border-bottom var(--transistion-time) ease-in-out,
       font-size var(--transistion-time) ease-in-out;
@@ -320,7 +321,7 @@ h4 {
 
   @media only screen and (min-width: 824px) {
     a {
-      font-size: 1.15em;
+      font-size: 1.25em;
     }
   }
 
@@ -328,6 +329,11 @@ h4 {
     a {
       font-size: 1.5em;
     }
+
+.active {
+  font-weight: 800;
+}
+
   }
 }
 
