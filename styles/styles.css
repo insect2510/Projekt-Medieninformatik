@@ -12,10 +12,7 @@
   --echo-black: #0a0b0d;
   --echo-surface: #181d29;
   --violette-light: #d8dde7;
-  --text-second: red;
   --orange: #f1c27d;
-  --accent-second:blue;
-
 
 
   /*++++++++++++++++++++++*/
@@ -88,13 +85,18 @@
 
 }
 
+html {
+  scroll-behavior: smooth;
+
+}
+
 body {
   margin: 0px;
   background-color: var(--color-background);
-  overflow-y: scroll;
-  scroll-behavior: smooth;
   font-weight: var(--font-weight);
 }
+
+
 
 @font-face {
   font-family: "Roboto";
