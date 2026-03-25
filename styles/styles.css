@@ -84,7 +84,7 @@
 
 html {
   scroll-behavior: smooth;
-
+  
 }
 
 body {
@@ -498,6 +498,12 @@ section {
   padding: var(--vertical-padding) var(--side-padding);
   margin-left: auto;
   margin-right: auto;
+  scroll-margin-top: 70px;
+
+
+    @media only screen and (min-width: 824px) {
+    scroll-margin-top: 0px;
+  }
 
 
 }
