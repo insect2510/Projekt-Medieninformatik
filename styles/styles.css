@@ -12,9 +12,9 @@
   --echo-black: #0a0b0d;
   --echo-surface: #181d29;
   --violette-light: #d8dde7;
-  --text-second: #5f5b8c;
+  --text-second: red;
   --orange: #f1c27d;
-  --accent-second: #cfaecf;
+  --accent-second:blue;
 
 
 
@@ -67,7 +67,7 @@
   --transistion-time: 350ms;
 
   /* maximal width for content */
-  /* --maxwidth: 1300px;
+   --max-width: 2300px;
 
   /* side spaceing for content */
 
@@ -381,6 +381,12 @@ h4 {
 }
 
 
+/***************************/
+/*                         */
+/*  main                   */
+/*                         */
+/***************************/
+
 main {
   margin-left: 0;
   transition: margin-left var(--transistion-time);
@@ -397,12 +403,12 @@ main {
 
 }
 
+
 /***************************/
 /*                         */
 /*   hero section          */
 /*                         */
 /***************************/
-
 
 .hero-image {
   height: clamp(360px, 80vw, 100dvh);
@@ -462,6 +468,16 @@ main {
   }
 }
 
+
+/***************************/
+/*                         */
+/*   sections              */
+/*                         */
+/***************************/
+
+
+/* side wrapper */
+
 .wrapper {
   margin-left: auto;
   margin-right: auto;
@@ -470,13 +486,20 @@ main {
 }
 
 section {
-  max-width: 2300px;
+  max-width: var(--max-width);
   padding: var(--vertical-padding) var(--side-padding);
   margin-left: auto;
   margin-right: auto;
 
 
 }
+
+
+/***************************/
+/*                         */
+/*   Buttons               */
+/*                         */
+/***************************/
 
 .shop-buttons {
   display: flex;
@@ -517,9 +540,17 @@ section {
       cursor: pointer;
 
     }
-
   }
 }
+
+
+/***************************/
+/*                         */
+/*   Grids                 */
+/*                         */
+/***************************/
+
+/* standard grid with 2 colums */
 
 .grid-2 {
   display: grid;
@@ -557,6 +588,8 @@ section {
 }
 
 
+/* grid for audio player secton */
+
 .grid-2-feature-box {
 
   width: fit-content;
@@ -570,6 +603,7 @@ section {
 
 }
 
+/* grid with 4 colums */
 
 .grid-4 {
   display: grid;
@@ -634,6 +668,14 @@ section {
   }
 }
 
+
+/***************************/
+/*                         */
+/*   Footer                */
+/*                         */
+/***************************/
+
+
 footer {
   position: relative;
   display: grid;
@@ -685,8 +727,11 @@ footer {
 }
 
 
-/* Scroll to Top Button */
-
+/***************************/
+/*                         */
+/*   Scroll to top         */
+/*                         */
+/***************************/
 
 #ScrollToTopButton {
   display: none;
