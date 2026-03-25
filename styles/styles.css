@@ -14,13 +14,6 @@
   --violette-light: #d8dde7;
   --orange: #f1c27d;
 
-
-  /*++++++++++++++++++++++*/
-  /*                      */
-  /*     light mode       */
-  /*                      */
-  /*++++++++++++++++++++++*/
-
   /* text colors */
   --color-text: var(--echo-black);
   --color-title: var(--orange);
@@ -46,7 +39,6 @@
   /* navigation buttons */
   --color-navigation-button-background: var(--violette-light);
 
-
   /* text sizes */
   --font-size-text: clamp(1rem, 1.25vw, 1.5rem);
   --font-size-hero: clamp(1.1rem, 5vw, 8rem);
@@ -54,7 +46,6 @@
   --font-size-h2: clamp(1.1rem, 3vw, 5rem);
   --font-size-h3: clamp(1.05rem, 3vw, 5rem);
   --font-size-h4: clamp(1rem, 2vw, 2rem);
-
 
   /* font weight */
   --font-weight-hero: 800;
@@ -85,6 +76,12 @@
 
 }
 
+/***************************/
+/*                         */
+/*   Setup                 */
+/*                         */
+/***************************/
+
 html {
   scroll-behavior: smooth;
 
@@ -96,12 +93,6 @@ body {
   font-weight: var(--font-weight);
 }
 
-
-
-@font-face {
-  font-family: "Roboto";
-  src: url("../assets/font/Roboto-VariableFont_wdth\,wght.ttf");
-}
 
 * {
   margin: 0;
@@ -118,6 +109,16 @@ iframe {
   width: 100%;
 }
 
+/***************************/
+/*                         */
+/*   Focus                 */
+/*                         */
+/***************************/
+
+:focus-visible, .slider:focus-visible {
+  outline: 3px solid var(--color-highlight) ;
+  border-radius: 3px;
+}
 
 
 /***************************/
@@ -127,6 +128,13 @@ iframe {
 /***************************/
 
 /* text style */
+
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/font/Roboto-VariableFont_wdth\,wght.ttf");
+}
+
 
 a,
 p {
@@ -251,7 +259,6 @@ h4 {
     width: var(--menu-width);
     transform: translateX(0);
     margin-top: 0px;
-    /*border-right: 1px solid lightgrey;*/
   }
 
   @media only screen and (min-width: 1024px) {
@@ -420,16 +427,15 @@ main {
   position: sticky;
   top: 0px;
   z-index: -1;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), url("../assets/img/hero/hero-824.webp");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.1)), url("../assets/img/hero/hero-824.webp");
 
   @media only screen and (min-width: 824px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), url("../assets/img/hero/hero-1024.webp");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.1)), url("../assets/img/hero/hero-1024.webp");
   }
 
   @media only screen and (min-width: 1024px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), url("../assets/img/hero/hero-1920.webp");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.1)), url("../assets/img/hero/hero-1920.webp");
   }
-
 
   /* position hero text */
 
@@ -727,6 +733,8 @@ footer {
     }
   }
 }
+
+
 
 
 /***************************/

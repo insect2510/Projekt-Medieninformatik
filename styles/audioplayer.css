@@ -8,6 +8,7 @@
     --color-player-button-hover: var(--color-highlight);
     --color-player-button-active: var(--color-player-button);
     --color-player-button-active-text: var(--color-player-background);
+    --color-player-focus: var(--color-highlight);
     --font-size-tracklist: clamp(1rem, 1vw, 2rem);
 
 }
@@ -128,6 +129,14 @@
             height: 20px;
             background: var(--color-player-button);
             cursor: pointer;
+        }
+
+        .slider:focus-visible::-webkit-slider-thumb {
+            box-shadow: 0 0 0 3px var(--color-player-focus  );
+        }
+
+        .slider:focus-visible::-moz-range-thumb {
+            box-shadow: 0 0 0 3px var(--color-player-focus);
         }
 
         label {
