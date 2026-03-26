@@ -265,10 +265,6 @@ h4 {
 
   }
 
-  @media only screen and (min-width: 1024px) {
-    width: calc(var(--menu-width)*1.1);
-  }
-
   ul {
     display: flex;
     row-gap: 1rem;
@@ -364,10 +360,6 @@ h4 {
   @media only screen and (min-width: 824px) {
     width: calc(var(--menu-width)*1.1);
   }
-
-  @media only screen and (min-width: 1024px) {
-    width: calc(var(--menu-width)*1.1);
-  }
 }
 
 /* hamburger icon */
@@ -458,17 +450,20 @@ main {
     flex-direction: row;
     justify-content: space-between;
 
-    /* page title as hero text */
+    /* hero text */
 
     div {
       Padding-left: 5%;
       padding-right: 5%;
     }
 
+    /* first text on the left */
     div:first-of-type {
       text-align: left;
 
     }
+
+    /* second text on the right */
 
     div:last-of-type {
       text-align: right;
@@ -506,7 +501,6 @@ section {
   margin-left: auto;
   margin-right: auto;
   scroll-margin-top: 70px;
-
 
   @media only screen and (min-width: 824px) {
     scroll-margin-top: 0px;
@@ -571,7 +565,6 @@ section {
 
 #ScrollToTopButton {
   display: none;
-  /* Hidden by default */
   height: 48px;
   width: 48px;
   position: fixed;
@@ -644,8 +637,7 @@ section {
 .grid-2-feature-box {
 
   width: fit-content;
-  border: 1px solid var(--color-highlight-background);
-  padding: 10%;
+  border: 0px solid var(--color-highlight-background);
   filter: drop-shadow(1px 1px 20px);
 
   h2 {
@@ -653,6 +645,7 @@ section {
   }
 
 }
+
 
 /* grid with 4 colums */
 
@@ -782,12 +775,12 @@ footer {
       a {
         text-decoration: none;
         font-size: var(--font-size-text);
-        border-bottom: none;
-        transition: color var(--transistion-time) ease-in-out,
-          border-bottom var(--transistion-time) ease-in-out;
+     
+        transition: color var(--transistion-time) ease-in-out;
 
         &:hover {
-          color: var(--color-menu-items-hover);
+          font-weight: 800;
+           color: var(--color-menu-items-hover);
         }
       }
     }

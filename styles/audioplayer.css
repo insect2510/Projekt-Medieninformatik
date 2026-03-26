@@ -1,5 +1,8 @@
 :root {
 
+    /* setup colors for player elements */
+    /* using colors from style.css */
+
     --color-player-heading: var(--color-text);
     --color-player-background: var(--color-background);
     --color-player-text: var(--color-text);
@@ -17,6 +20,8 @@
 .audio-player {
 
     width: fit-content;
+
+    /* tracklist container as grid */
 
     .tracklist {
         display: grid;
@@ -132,7 +137,7 @@
         }
 
         .slider:focus-visible::-webkit-slider-thumb {
-            box-shadow: 0 0 0 3px var(--color-player-focus  );
+            box-shadow: 0 0 0 3px var(--color-player-focus);
         }
 
         .slider:focus-visible::-moz-range-thumb {
@@ -175,6 +180,8 @@
             }
         }
 
+        /* stop button */
+
         .audio-is-playing {
             background-color: var(--color-player-button-active);
             color: var(--color-player-button-active-text);
@@ -183,6 +190,8 @@
                 color: var(--color-player-button);
             }
         }
+
+        /* button is disabled */
 
         .not-skippable {
             opacity: 0.5;
