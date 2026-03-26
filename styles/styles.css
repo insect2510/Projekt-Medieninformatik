@@ -27,8 +27,9 @@
   /* footer background color */
   --color-footer-background: var(--echo-surface);
 
-  /* menu text color */
-  --color-menu-text: var(--white);
+  /* menu items color */
+  --color-menu-items: var(--white);
+  --color-menu-items-hover: var(--color-highlight);
 
   /* highlight color */
   --color-highlight: var(--orange);
@@ -55,7 +56,7 @@
   --transistion-time: 350ms;
 
   /* maximal width for content */
-   --max-width: 2300px;
+  --max-width: 2300px;
 
   /* side spaceing for content */
 
@@ -84,7 +85,7 @@
 
 html {
   scroll-behavior: smooth;
-  
+
 }
 
 body {
@@ -115,8 +116,9 @@ iframe {
 /*                         */
 /***************************/
 
-:focus-visible, .slider:focus-visible {
-  outline: 3px solid var(--color-highlight) ;
+:focus-visible,
+.slider:focus-visible {
+  outline: 3px solid var(--color-highlight);
   border-radius: 3px;
 }
 
@@ -193,7 +195,7 @@ h4 {
 
 .top-row {
   background-color: var(--color-menu-background);
-  color: var(--color-menu-text);
+  color: var(--color-menu-items);
   padding: 1rem;
   top: 0;
   left: 0;
@@ -246,7 +248,8 @@ h4 {
   overflow-x: hidden;
   padding-top: 1rem;
 
-  transition: width var(--transistion-time) ease-in-out,
+  transition:
+    width var(--transistion-time) ease-in-out,
     padding-top var(--transistion-time) ease-in-out,
     transform var(--transistion-time) ease-in-out;
 
@@ -256,9 +259,10 @@ h4 {
   }
 
   @media only screen and (min-width: 824px) {
-    width: var(--menu-width);
+    width: calc(var(--menu-width)*1.1);
     transform: translateX(0);
     margin-top: 0px;
+
   }
 
   @media only screen and (min-width: 1024px) {
@@ -313,18 +317,20 @@ h4 {
   }
 
   a {
-    color: var(--color-menu-text);
+    color: var(--color-menu-items);
     text-transform: uppercase;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 300;
-    border-bottom: 1px solid var(--color-menu-background);
-    transition: border-bottom var(--transistion-time) ease-in-out,
-      font-size var(--transistion-time) ease-in-out;
+
+    transition:
+      font-size var(--transistion-time) ease-in-out,
+      color var(--transistion-time) ease-in-out;
 
     &:hover {
-      border-bottom: 1px solid var(--color-menu-text);
-      ;
+      color: var(--color-menu-items-hover);
+      font-weight: 800;
+
     }
   }
 
@@ -339,9 +345,9 @@ h4 {
       font-size: 1.5em;
     }
 
-.active {
-  font-weight: 800;
-}
+    .active {
+      font-weight: 800;
+    }
 
   }
 }
@@ -356,7 +362,7 @@ h4 {
   flex-direction: column;
 
   @media only screen and (min-width: 824px) {
-    width: var(--menu-width);
+    width: calc(var(--menu-width)*1.1);
   }
 
   @media only screen and (min-width: 1024px) {
@@ -364,23 +370,24 @@ h4 {
   }
 }
 
-/* hamburger button */
+/* hamburger icon */
+
 .menu-button {
   font-size: var(--font-size-text);
-  color: var(--color-menu-text);
+  color: var(--color-menu-items);
   background-color: var(--color-menu-background);
   border: 1px solid var(--color-menu-background);
   padding: 0.5em;
   border: none;
   cursor: pointer;
-  transition: rotate var(--transistion-time) ease-in-out,
+  transition:
     color var(--transistion-time) ease-in-out,
     background-color var(--transistion-time) ease-in-out;
 
   &:hover {
 
     color: var(--color-menu-background);
-    background-color: var(--color-menu-text);
+    background-color: var(--color-menu-items);
   }
 
   @media only screen and (min-width: 824px) {
@@ -402,7 +409,7 @@ main {
   z-index: 0;
 
   @media only screen and (min-width: 824px) {
-    margin-left: var(--menu-width);
+    margin-left: calc(var(--menu-width)*1.1);
     transition: margin-left var(--transistion-time);
   }
 
@@ -501,7 +508,7 @@ section {
   scroll-margin-top: 70px;
 
 
-    @media only screen and (min-width: 824px) {
+  @media only screen and (min-width: 824px) {
     scroll-margin-top: 0px;
   }
 
@@ -514,6 +521,8 @@ section {
 /*   Buttons               */
 /*                         */
 /***************************/
+
+/* buttons for shop links */
 
 .shop-buttons {
   display: flex;
@@ -558,6 +567,36 @@ section {
 }
 
 
+/*   Scroll to top         */
+
+#ScrollToTopButton {
+  display: none;
+  /* Hidden by default */
+  height: 48px;
+  width: 48px;
+  position: fixed;
+  bottom: 2rem;
+  right: 3vw;
+  z-index: 99;
+  padding-top: 2px;
+  text-align: center;
+  border: solid 2px;
+  border-radius: 50%;
+  background-color: var(--color-navigation-button-background);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: var(--font-mobile);
+  opacity: 0.8;
+  transition: var(--transistion-time);
+
+  &:hover {
+    background-color: var(--color-highlight);
+    opacity: 1;
+  }
+}
+
+
+
 /***************************/
 /*                         */
 /*   Grids                 */
@@ -591,13 +630,11 @@ section {
   }
 
   .release-meta {
-
     padding-bottom: 0;
   }
 
   @media only screen and (min-width: 1024px) {
     grid-template-columns: 1fr 1fr;
-    ;
   }
 }
 
@@ -634,29 +671,41 @@ section {
 
   }
 
-  .card {
+  /* card for one review */
 
+  .card {
     display: flex;
     flex-direction: column;
+
+    /* heading inside the card */
+
+    h4 {
+      padding-bottom: 1em;
+      width: 100%;
+      align-self: start;
+    }
+
+    /* text inside the card */
 
     p {
       align-self: start;
     }
 
-    h4 {
-      padding-bottom: 1em;
-      width: 100%;
-
-      align-self: start;
-    }
+    /* link inside the card */
 
     a {
       padding-top: 1em;
       text-decoration: none;
-      ;
       font-weight: 600;
       display: block;
+      width: fit-content;
       color: var(--color-text);
+      border-bottom: 1px solid var(--color-background);
+      transition: border-bottom var(--transistion-time) ease-in-out;
+
+      &:hover {
+        border-bottom: 1px solid var(--color-text);
+      }
     }
 
   }
@@ -664,7 +713,6 @@ section {
 
   @media only screen and (min-width: 824px) {
     grid-template-columns: 1fr 1fr;
-    ;
 
     h3 {
       grid-column-start: 1;
@@ -689,20 +737,22 @@ section {
 /*                         */
 /***************************/
 
+/* footer container */
 
 footer {
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
   background-color: var(--color-footer-background);
-  color: var(--color-menu-text);
+  color: var(--color-menu-items);
   padding: var(--vertical-padding) var(--side-padding);
   column-gap: 5%;
   row-gap: 2rem;
 
 
   @media only screen and (min-width: 824px) {
-    margin-left: var(--menu-width);    grid-template-columns: 1fr 1fr;
+    margin-left: var(--menu-width);
+    grid-template-columns: 1fr 1fr;
   }
 
 
@@ -710,6 +760,9 @@ footer {
     grid-template-columns: 1fr 1fr 1fr;
     margin-left: calc(var(--menu-width)*1.1);
   }
+
+
+  /* one list with footer links */
 
   ul {
     display: flex;
@@ -720,57 +773,23 @@ footer {
 
       a,
       p {
-        color: var(--color-menu-text);
+        color: var(--color-menu-items);
         text-decoration: none;
+        font-weight: 300;
+
       }
 
       a {
-        color: var(--color-menu-text);
         text-decoration: none;
         font-size: var(--font-size-text);
-        border-bottom: 1px solid var(--color-menu-background);
-        transition: border-bottom var(--transistion-time) ease-in-out;
+        border-bottom: none;
+        transition: color var(--transistion-time) ease-in-out,
+          border-bottom var(--transistion-time) ease-in-out;
 
         &:hover {
-          border-bottom: 1px solid var(--color-menu-text);
-          ;
+          color: var(--color-menu-items-hover);
         }
       }
     }
-  }
-}
-
-
-
-
-/***************************/
-/*                         */
-/*   Scroll to top         */
-/*                         */
-/***************************/
-
-#ScrollToTopButton {
-  display: none;
-  /* Hidden by default */
-  height: 48px;
-  width: 48px;
-  position: fixed;
-  bottom: 2rem;
-  right: 3vw;
-  z-index: 99;
-  padding-top: 2px;
-  text-align: center;
-  border: solid 2px;
-  border-radius: 50%;
-  background-color: var(--color-navigation-button-background);
-  color: var(--color-text);
-  cursor: pointer;
-  font-size: var(--font-mobile);
-  opacity: 0.8;
-  transition: var(--transistion-time);
-
-  &:hover {
-    background-color: var(--color-highlight);
-    opacity: 1;
   }
 }
