@@ -601,7 +601,7 @@ section {
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 2rem;
+  row-gap: 1rem;
   column-gap: 5vw;
   justify-items: center;
 
@@ -619,7 +619,7 @@ section {
   p {
     font-size: var(--font-size-text);
     margin: auto;
-    padding-bottom: 1em;
+    padding-bottom: 0em;
   }
 
   .release-meta {
@@ -628,6 +628,11 @@ section {
 
   @media only screen and (min-width: 1024px) {
     grid-template-columns: 1fr 1fr;
+
+    .text-right {
+      grid-column: 2 / span 1;
+      grid-row: 1;
+    }
   }
 }
 
