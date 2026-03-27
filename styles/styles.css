@@ -43,9 +43,8 @@
   /* text sizes */
   --font-size-text: clamp(1rem, 1.25vw, 1.5rem);
   --font-size-hero: clamp(1.1rem, 5vw, 8rem);
-  --font-size-h1: clamp(1.1rem, 4vw, 6rem);
   --font-size-h2: clamp(1.1rem, 3vw, 5rem);
-  --font-size-h3: clamp(1.05rem, 3vw, 5rem);
+  --font-size-h3: clamp(1rem, 2vw, 2rem);
   --font-size-h4: clamp(1rem, 2vw, 2rem);
 
   /* font weight */
@@ -62,7 +61,6 @@
 
   --side-padding: 5vw;
   --vertical-padding: clamp(24px, 5vw, 128px);
-
 
   /* menu width */
   --menu-width: 230px;
