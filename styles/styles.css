@@ -687,13 +687,15 @@ section {
       align-self: start;
     }
 
+    p:first-of-type {
+      padding-bottom: 1em;
+    }
+
     /* link inside the card */
 
     a {
-      padding-top: 1em;
       text-decoration: none;
       font-weight: 600;
-      width: fit-content;
       color: var(--color-text);
       border-bottom: 1px solid var(--color-background);
       transition: border-bottom var(--transistion-time) ease-in-out;
