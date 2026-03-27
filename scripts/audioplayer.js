@@ -10,7 +10,7 @@ function audioPlayer() {
     // if so, run function
     if (document.getElementById("audioplayer") != null) {
 
-        let myArr;
+        let trackArray;
         let myObj;
         let myArrLenght;
 
@@ -24,29 +24,29 @@ function audioPlayer() {
 
             try {
 
-                // load and parse concert-dates.json
+                // load and parse music.json
 
                 const response = await fetch("data/music.json");
                 const myObj = await response.json();
 
                 // set json data to an array
 
-                myArr = myObj;
+                trackArray = myObj;
 
             }
 
-            // if an error occured, write error message to html
+            // if an error occured, write message to html
             catch (error) {
-                document.getElementById("audioplayer").innerHTML = "<p>Error loading data. Please try again later.</p>"
+                document.getElementById("audioplayer").innerHTML = "<p>Listen on <a href='https://open.spotify.com/intl-de/artist/3DvAgRmwCrUUlnvqASCdDB' aria-label='listen to Early Reflections on spotify'>Spotify</a>."
                 return
             }
 
-            writeHtmlAudioPlayer(myArr)
+            writeHtmlAudioPlayer(trackArray)
         }
 
         // construct html from the loaded date
 
-        function writeHtmlAudioPlayer(myArr) {
+        function writeHtmlAudioPlayer(trackArray) {
 
             let trackid = 0;
             let y = 0;
@@ -57,7 +57,7 @@ function audioPlayer() {
             // chech if array has no entries
             // if so, write a message into html
 
-            if (myArr.length == 0) {
+            if (trackArray.length == 0) {
                 htmlAudioPlayer += "<p>no audio files yet. Want to upload some?</p>"
             }
             else
@@ -66,8 +66,8 @@ function audioPlayer() {
                 // construct tracklist from array
 
                 htmlAudioPlayer += "<ol class='tracklist' aria-label='tracklist of the music album'>";
-            for (y = 0; y < myArr.length; y++) {
-                htmlAudioPlayer += "<li><button class='tracklist-items'>" + (y + 1) + ". " + myArr[y].trackname + "</button><p>" + myArr[y].length + "</p></li> ";
+            for (y = 0; y < trackArray.length; y++) {
+                htmlAudioPlayer += "<li><button class='tracklist-items'>" + (y + 1) + ". " + trackArray[y].trackname + "</button><p>" + trackArray[y].length + "</p></li> ";
             }
             htmlAudioPlayer += "</ol>";
 
@@ -94,7 +94,7 @@ function audioPlayer() {
             htmlAudioPlayer += "</button>";
             htmlAudioPlayer += "</li>";
             htmlAudioPlayer += "<li>";
-            htmlAudioPlayer += "<audio src='assets/audio/" + myArr[trackidstart].filename + "'></audio>";
+            htmlAudioPlayer += "<audio src='assets/audio/" + trackArray[trackidstart].filename + "'></audio>";
             htmlAudioPlayer += "<button id='playButton' class='toggle control-buttons' role='switch' aria-checked='false' aria-label='play and pause the audio'>";
             htmlAudioPlayer += "<i class='fa-solid fa-play'></i>";
             htmlAudioPlayer += "</button>";
@@ -138,7 +138,7 @@ function audioPlayer() {
                 item.addEventListener("click", () => {
                     tracklistItems[trackidprevious].classList.remove("active");
                     tracklistItems[index].classList.add("active");
-                    play(myArr[index])
+                    play(trackArray[index])
                     trackid = index;
                     trackidprevious = index;
                 });
@@ -164,19 +164,19 @@ function audioPlayer() {
                     trackid--;
                     trackidprevious = trackid;
                     tracklistItems[trackid].classList.add("active");
-                    play(myArr[trackid]);
+                    play(trackArray[trackid]);
                 }
             });
 
             // add event listener to next button
 
             nextButton.addEventListener("click", () => {
-                if (trackid < (myArr.length - 1)) {
+                if (trackid < (trackArray.length - 1)) {
                     tracklistItems[trackidprevious].classList.remove("active");
                     trackid++;
                     trackidprevious = trackid;
                     tracklistItems[trackid].classList.add("active");
-                    play(myArr[trackid]);
+                    play(trackArray[trackid]);
                 }
             });
 
@@ -184,12 +184,12 @@ function audioPlayer() {
 
             playButton.addEventListener("click", () => {
                 if (audio.paused) {
-                    play(myArr[trackid]);
+                    play(trackArray[trackid]);
                     playButton.setAttribute("aria-checked", "true");
                 } else {
                     audio.pause();
                     playButton.innerHTML = "<i class='fa-solid fa-play'></i>";
-                     playButton.classList.remove("audio-is-playing");
+                    playButton.classList.remove("audio-is-playing");
                 }
             });
 
