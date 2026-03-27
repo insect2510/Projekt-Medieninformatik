@@ -693,7 +693,6 @@ section {
       padding-top: 1em;
       text-decoration: none;
       font-weight: 600;
-      display: block;
       width: fit-content;
       color: var(--color-text);
       border-bottom: 1px solid var(--color-background);
