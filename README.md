@@ -23,3 +23,4 @@ Breakpoints:
 - medium: 824px - 1023px  
 - large: >= 1024px  
 - max-width content: 2.300px  
+
