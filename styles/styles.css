@@ -48,8 +48,8 @@
   --font-size-h4: clamp(1rem, 2vw, 2rem);
 
   /* font weight */
-  --font-weight-hero: 800;
-  --font-weight: 200;
+  --font-weight-heading: 800;
+  --font-weight: 400;
 
   /* animation duration */
   --transistion-time: 350ms;
@@ -142,7 +142,7 @@ p {
   color: var(--color-text);
   letter-spacing: 0.03em;
   font-family: "Roboto";
-  font-weight: 400;
+  font-weight: var(--font-weight);
   line-height: 1.5;
 }
 
@@ -155,7 +155,7 @@ h4 {
   line-height: 1;
   letter-spacing: 0.02em;
   font-family: "Roboto";
-  font-weight: 800;
+  font-weight: var(--font-weight-heading);
 }
 
 
@@ -315,7 +315,7 @@ h4 {
     text-transform: uppercase;
     text-decoration: none;
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: var(--font-weight);
 
     transition:
       font-size var(--transistion-time) ease-in-out,
@@ -340,7 +340,7 @@ h4 {
     }
 
     .active {
-      font-weight: 800;
+      font-weight: var(--font-weight-heading);
     }
 
   }
@@ -617,7 +617,10 @@ section {
   p {
     font-size: var(--font-size-text);
     margin: auto;
-    padding-bottom: 0em;
+  }
+
+  .pb-2 {
+    padding-bottom: 1em;
   }
 
   .release-meta {
@@ -697,12 +700,7 @@ section {
       text-decoration: none;
       font-weight: 600;
       color: var(--color-text);
-      border-bottom: 1px solid var(--color-background);
-      transition: border-bottom var(--transistion-time) ease-in-out;
-
-      &:hover {
-        border-bottom: 1px solid var(--color-text);
-      }
+      border-bottom: 1px solid var(--color-text);
     }
 
   }
@@ -772,19 +770,16 @@ footer {
       p {
         color: var(--color-menu-items);
         text-decoration: none;
-        font-weight: 300;
-
       }
 
       a {
         text-decoration: none;
         font-size: var(--font-size-text);
-     
         transition: color var(--transistion-time) ease-in-out;
 
         &:hover {
-          font-weight: 800;
-           color: var(--color-menu-items-hover);
+          font-weight: var(--font-weight-heading);
+          color: var(--color-menu-items-hover);
         }
       }
     }
